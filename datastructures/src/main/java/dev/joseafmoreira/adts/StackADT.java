@@ -1,5 +1,7 @@
 package dev.joseafmoreira.adts;
 
+import dev.joseafmoreira.exceptions.EmptyCollectionException;
+
 /**
  * <h2>
  * StackADT
@@ -16,22 +18,25 @@ public interface StackADT<T> {
      * Adds the specified element to the top of this stack.
      *
      * @param element the element to be pushed onto this stack
+     * @throws NullPointerException if the element is null
      */
-    void push(T element);
+    void push(T element) throws NullPointerException;
 
     /**
      * Removes and returns the element at the top of this stack.
      *
      * @return the element removed from the top of this stack
+     * @throws EmptyCollectionException if this stack is empty
      */
-    T pop();
+    T pop() throws EmptyCollectionException;
 
     /**
      * Retrieves, but does not remove, the element at the top of this stack.
      *
      * @return the element at the top of this stack
+     * @throws EmptyCollectionException if this stack is empty
      */
-    T peek();
+    T peek() throws EmptyCollectionException;
 
     /**
      * Checks if this stack is empty.
