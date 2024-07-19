@@ -1,5 +1,5 @@
 # Data Structures
-This projects involves implements the following data structures:
+This projects involves implements, in Java, the following data structures:
 - Stack
 - Queue
 - Ordered list
