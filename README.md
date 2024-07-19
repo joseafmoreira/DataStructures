@@ -3,11 +3,11 @@ This projects involves implements, in Java, the following data structures:
 - Stack
 - Queue
 - List
-- - Unordered
-- - Ordered
-- Ordered list
-- Unordered list
-- Binary Tree
-- Binary Search Tree
+    - Ordered
+    - Unordered
+- Tree
+    - Binary 
+        - Search
+        - Heap
 - Graph
-- Network
+    - Network (or Digraph)
