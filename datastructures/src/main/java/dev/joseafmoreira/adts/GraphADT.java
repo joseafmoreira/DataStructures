@@ -7,7 +7,7 @@ import java.util.Iterator;
  * GraphADT
  * </h2>
  * <p>
- * The <code>GraphADT</code> interface that specifies the behavior of a graph
+ * The {@code GraphADT} interface that specifies the behavior of a graph
  * </p>
  * <p>
  * Author: ESTG-ED-2324

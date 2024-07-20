@@ -5,7 +5,7 @@ package dev.joseafmoreira.adts;
  * NetworkADT
  * </h2>
  * <p>
- * The <code>NetworkADT</code> interface that specifies the behavior of a network
+ * The {@code NetworkADT} interface that specifies the behavior of a network
  * </p>
  * <p>
  * This abstract data type extends {@link GraphADT}

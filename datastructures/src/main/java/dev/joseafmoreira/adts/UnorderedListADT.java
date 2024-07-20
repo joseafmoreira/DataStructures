@@ -5,7 +5,7 @@ package dev.joseafmoreira.adts;
  * UnorderedListADT
  * </h2>
  * <p>
- * The <code>UnorderedListADT</code> interface that specifies the behavior of an unordered list
+ * The {@code UnorderedListADT} interface that specifies the behavior of an unordered list
  * </p>
  * <p>
  * This abstract data type extends {@link ListADT}

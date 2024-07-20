@@ -1,52 +1,57 @@
-package dev.joseafmoreira.stack;
+package dev.joseafmoreira.queue;
 
-import dev.joseafmoreira.adts.StackADT;
+import dev.joseafmoreira.adts.QueueADT;
 import dev.joseafmoreira.exceptions.EmptyCollectionException;
 
 /**
  * <h2>
- * ArrayStack
+ * ArrayQueue
  * </h2>
  * <p>
- * The {@code ArrayStack} class that implements the {@link StackADT StackADT} interface.
+ * The {@code CircularArrayQueue} class that implements the {@link QueueADT QueueADT} interface.
  * </p>
  * <p>
- * The {@code ArrayStack} is implemented using an array
+ * The {@code CircularArrayQueue} is implemented using an array
  * </p>
  * <p>
  * Author: joseafmoreira
  * </p>
  */
-public class ArrayStack<T> implements StackADT<T> {
+public class CircularArrayQueue<T> implements QueueADT<T> {
     /**
-     * This represents the default capacity of this stack
+     * This represents the default capacity of this queue
      */
-    private static final int DEFAULT_CAPACITY = 10;
+    protected static final int DEFAULT_CAPACITY = 10;
     /**
-     * This represents the arrays containing the elements of this stack
+     * This represents the arrays containing the elements of this queue
      */
     protected T[] array;
     /**
-     * This represents the number of elements in this stack
+     * This represents the front index in this queue
+     */
+    protected int frontIndex;
+    /**
+     * This represents the number of elements in this queue
      */
     protected int size;
 
     /**
-     * Instantiate an empty ArrayStack object
+     * Instantiate an empty ArrayQueue object
      */
-    public ArrayStack() {
+    public CircularArrayQueue() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
-     * Instantiate an empty ArrayStack with a specified initial capacity
+     * Instantiate an empty ArrayQueue with a specified initial capacity
      * 
      * @param initialCapacity the specified initial capacity of the array (Minimum value is 0)
      */
     @SuppressWarnings("unchecked")
-    public ArrayStack(int initialCapacity) {
+    public CircularArrayQueue(int initialCapacity) {
         initialCapacity = Math.max(initialCapacity, 0);
         array = (T[]) new Object[initialCapacity];
+        frontIndex = 0;
         size = 0;
     }
 
@@ -54,19 +59,22 @@ public class ArrayStack<T> implements StackADT<T> {
      * {@inheritDoc}
      */
     @Override
-    public void push(T element) throws NullPointerException {
+    public void enqueue(T element) throws NullPointerException {
         if (element == null) throw new NullPointerException("Element can't be null");
         if (size() == array.length) expandCapacity();
 
-        array[size++] = element;
+        array[(frontIndex + size) % array.length] = element;
+        size++;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public T pop() throws EmptyCollectionException {
-        T result = peek();
+    public T dequeue() throws EmptyCollectionException {
+        T result = first();
+        array[frontIndex] = null;
+        frontIndex = (frontIndex + 1) % array.length;
         size--;
 
         return result;
@@ -76,10 +84,10 @@ public class ArrayStack<T> implements StackADT<T> {
      * {@inheritDoc}
      */
     @Override
-    public T peek() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("Stack is empty");
+    public T first() throws EmptyCollectionException {
+        if (isEmpty()) throw new EmptyCollectionException("Queue is empty");
 
-        return array[size() - 1];
+        return array[frontIndex];
     }
 
     /**
@@ -104,7 +112,7 @@ public class ArrayStack<T> implements StackADT<T> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
-        if (!isEmpty()) for (int i = 0; i < size(); i++) result.append(array[i]).append((i == size() - 1) ? "" : ", ");
+        if (!isEmpty()) for (int i = 0; i < size(); i++) result.append(array[(frontIndex + i) % array.length]).append(((frontIndex + i) % array.length == (frontIndex + size() - 1) % array.length) ? "" : ", ");
         result.append("]");
 
         return result.toString();
@@ -118,8 +126,9 @@ public class ArrayStack<T> implements StackADT<T> {
     @SuppressWarnings("unchecked")
     private void expandCapacity() {
         T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
-        for (int i = 0; i < size(); i++) newArray[i] = array[i];
+        for (int i = 0; i < size(); i++) newArray[i] = array[(frontIndex + i) % array.length];
 
         array = newArray;
+        frontIndex = 0;
     }
 }

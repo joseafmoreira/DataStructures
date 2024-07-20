@@ -1,50 +1,50 @@
-package dev.joseafmoreira.stack;
+package dev.joseafmoreira.queue;
 
-import dev.joseafmoreira.adts.StackADT;
+import dev.joseafmoreira.adts.QueueADT;
 import dev.joseafmoreira.exceptions.EmptyCollectionException;
 
 /**
  * <h2>
- * ArrayStack
+ * ArrayQueue
  * </h2>
  * <p>
- * The {@code ArrayStack} class that implements the {@link StackADT StackADT} interface.
+ * The {@code ArrayQueue} class that implements the {@link QueueADT QueueADT} interface.
  * </p>
  * <p>
- * The {@code ArrayStack} is implemented using an array
+ * The {@code ArrayQueue} is implemented using an array
  * </p>
  * <p>
  * Author: joseafmoreira
  * </p>
  */
-public class ArrayStack<T> implements StackADT<T> {
+public class ArrayQueue<T> implements QueueADT<T> {
     /**
-     * This represents the default capacity of this stack
+     * This represents the default capacity of this queue
      */
-    private static final int DEFAULT_CAPACITY = 10;
+    protected static final int DEFAULT_CAPACITY = 10;
     /**
-     * This represents the arrays containing the elements of this stack
+     * This represents the arrays containing the elements of this queue
      */
     protected T[] array;
     /**
-     * This represents the number of elements in this stack
+     * This represents the number of elements in this queue
      */
     protected int size;
 
     /**
-     * Instantiate an empty ArrayStack object
+     * Instantiate an empty ArrayQueue object
      */
-    public ArrayStack() {
+    public ArrayQueue() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
-     * Instantiate an empty ArrayStack with a specified initial capacity
+     * Instantiate an empty ArrayQueue with a specified initial capacity
      * 
      * @param initialCapacity the specified initial capacity of the array (Minimum value is 0)
      */
     @SuppressWarnings("unchecked")
-    public ArrayStack(int initialCapacity) {
+    public ArrayQueue(int initialCapacity) {
         initialCapacity = Math.max(initialCapacity, 0);
         array = (T[]) new Object[initialCapacity];
         size = 0;
@@ -54,7 +54,7 @@ public class ArrayStack<T> implements StackADT<T> {
      * {@inheritDoc}
      */
     @Override
-    public void push(T element) throws NullPointerException {
+    public void enqueue(T element) throws NullPointerException {
         if (element == null) throw new NullPointerException("Element can't be null");
         if (size() == array.length) expandCapacity();
 
@@ -65,8 +65,10 @@ public class ArrayStack<T> implements StackADT<T> {
      * {@inheritDoc}
      */
     @Override
-    public T pop() throws EmptyCollectionException {
-        T result = peek();
+    public T dequeue() throws EmptyCollectionException {
+        T result = first();
+        array[0] = null;
+        for (int i = 0; i < size() - 1; i++) array[i] = array[i + 1];
         size--;
 
         return result;
@@ -76,10 +78,10 @@ public class ArrayStack<T> implements StackADT<T> {
      * {@inheritDoc}
      */
     @Override
-    public T peek() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("Stack is empty");
+    public T first() throws EmptyCollectionException {
+        if (isEmpty()) throw new EmptyCollectionException("Queue is empty");
 
-        return array[size() - 1];
+        return array[0];
     }
 
     /**

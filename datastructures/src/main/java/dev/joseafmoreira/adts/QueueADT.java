@@ -1,11 +1,13 @@
 package dev.joseafmoreira.adts;
 
+import dev.joseafmoreira.exceptions.EmptyCollectionException;
+
 /**
  * <h2>
  * QueueADT
  * </h2>
  * <p>
- * The <code>QueueADT</code> interface that specifies the behavior of a queue
+ * The {@code QueueADT} interface that specifies the behavior of a queue
  * </p>
  * <p>
  * Author: ESTG-ED-2324
@@ -16,22 +18,25 @@ public interface QueueADT<T> {
      * Adds the specified element to the end of this queue.
      *
      * @param element the element to be added to this queue
+     * @throws NullPointerException if the element is null
      */
-    void enqueue(T element);
+    void enqueue(T element) throws NullPointerException;
 
     /**
      * Removes and returns the element at the front of this queue.
      *
      * @return the element removed from the front of this queue
+     * @throws EmptyCollectionException if this queue is empty
      */
-    T dequeue();
+    T dequeue() throws EmptyCollectionException;
 
     /**
      * Returns the element at the front of this queue without removing it.
      *
      * @return the element at the front of this queue
+     * @throws EmptyCollectionException if this queue is empty
      */
-    T first();
+    T first() throws EmptyCollectionException;
 
     /**
      * Checks if this queue is empty.

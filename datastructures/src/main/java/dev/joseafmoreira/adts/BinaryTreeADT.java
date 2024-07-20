@@ -7,7 +7,7 @@ import java.util.Iterator;
  * BinaryTreeADT
  * </h2>
  * <p>
- * The <code>BinaryTreeADT</code> interface that specifies the behavior of a binary tree
+ * The {@code BinaryTreeADT} interface that specifies the behavior of a binary tree
  * </p>
  * <p>
  * Author: ESTG-ED-2324

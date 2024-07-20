@@ -5,7 +5,7 @@ package dev.joseafmoreira.node;
  * Node
  * </h2>
  * <p>
- * The <code>Node</code> class that specified the behavior of a single linked node.
+ * The {@code Node} class that specified the behavior of a single linked node.
  * </p>
  * <p>
  * Author: joseafmoreira

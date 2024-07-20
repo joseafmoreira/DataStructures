@@ -5,7 +5,7 @@ package dev.joseafmoreira.adts;
  * HeapADT
  * </h2>
  * <p>
- * The <code>HeapADT</code> interface that specifies the behavior of a heap
+ * The {@code HeapADT} interface that specifies the behavior of a heap
  * </p>
  * <p>
  * This abstract data type extends {@link BinaryTreeADT}

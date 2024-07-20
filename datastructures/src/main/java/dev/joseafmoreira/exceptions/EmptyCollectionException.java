@@ -5,10 +5,10 @@ package dev.joseafmoreira.exceptions;
  * EmptyCollectionException
  * </h2>
  * <p>
- * The <code>EmptyCollectionException</code> unchecked exception is thrown when attempting to perform an operation on an empty collection.
+ * The {@code EmptyCollectionException} unchecked exception is thrown when attempting to perform an operation on an empty collection.
  * </p>
  * <p>
- * The <code>EmptyCollectionException</code> extends {@link RuntimeException}
+ * The {@code EmptyCollectionException} extends {@link RuntimeException}
  * </p>
  * <p>
  * Author: joseafmoreira

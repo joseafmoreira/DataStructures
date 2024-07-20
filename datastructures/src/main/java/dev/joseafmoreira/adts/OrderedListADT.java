@@ -5,7 +5,7 @@ package dev.joseafmoreira.adts;
  * OrderedListADT
  * </h2>
  * <p>
- * The <code>OrderedListADT</code> interface that specifies the behavior of an ordered list
+ * The {@code OrderedListADT} interface that specifies the behavior of an ordered list
  * </p>
  * <p>
  * This abstract data type extends {@link ListADT}

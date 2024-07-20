@@ -7,7 +7,7 @@ import java.util.Iterator;
  * ListADT
  * </h2>
  * <p>
- * The <code>ListADT</code> interface that specifies the behavior of a list
+ * The {@code ListADT} interface that specifies the behavior of a list
  * </p>
  * <p>
  * This abstract data type extends {@link Iterable}

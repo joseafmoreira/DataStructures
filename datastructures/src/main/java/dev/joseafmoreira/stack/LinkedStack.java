@@ -9,10 +9,10 @@ import dev.joseafmoreira.node.Node;
  * LinkedStack
  * </h2>
  * <p>
- * The <code>LinkedStack</code> class that implements {@link StackADT StackADT} interface.
+ * The {@code LinkedStack} class that implements the {@link StackADT StackADT} interface.
  * </p>
  * <p>
- * The <code>LinkedStack</code> is implemented using linked {@link Node nodes}
+ * The {@code LinkedStack} is implemented using linked {@link Node nodes}
  * </p>
  * <p>
  * Author: joseafmoreira

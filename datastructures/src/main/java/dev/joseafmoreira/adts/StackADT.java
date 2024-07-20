@@ -7,7 +7,7 @@ import dev.joseafmoreira.exceptions.EmptyCollectionException;
  * StackADT
  * </h2>
  * <p>
- * The <code>StackADT</code> interface that specifies the behavior of a stack
+ * The {@code StackADT} interface that specifies the behavior of a stack
  * </p>
  * <p>
  * Author: ESTG-ED-2324

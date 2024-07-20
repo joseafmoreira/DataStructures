@@ -5,7 +5,7 @@ package dev.joseafmoreira.adts;
  * BinarySearchTreeADT
  * </h2>
  * <p>
- * The <code>BinarySearchTreeADT</code> interface that specifies the behavior of a binary search tree
+ * The {@code BinarySearchTreeADT} interface that specifies the behavior of a binary search tree
  * </p>
  * <p>
  * This abstract data type extends {@link BinaryTreeADT}
