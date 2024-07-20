@@ -45,8 +45,7 @@ public class ArrayQueue<T> implements QueueADT<T> {
      */
     @SuppressWarnings("unchecked")
     public ArrayQueue(int initialCapacity) {
-        initialCapacity = Math.max(initialCapacity, 0);
-        array = (T[]) new Object[initialCapacity];
+        array = (T[]) new Object[Math.max(initialCapacity, 0)];
         size = 0;
     }
 

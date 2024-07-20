@@ -49,8 +49,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
      */
     @SuppressWarnings("unchecked")
     public CircularArrayQueue(int initialCapacity) {
-        initialCapacity = Math.max(initialCapacity, 0);
-        array = (T[]) new Object[initialCapacity];
+        array = (T[]) new Object[Math.max(initialCapacity, 0)];
         frontIndex = 0;
         size = 0;
     }
