@@ -45,8 +45,7 @@ public class ArrayStack<T> implements StackADT<T> {
      */
     @SuppressWarnings("unchecked")
     public ArrayStack(int initialCapacity) {
-        initialCapacity = Math.max(initialCapacity, 0);
-        array = (T[]) new Object[initialCapacity];
+        array = (T[]) new Object[Math.max(initialCapacity, 0)];
         size = 0;
     }
 
@@ -67,7 +66,7 @@ public class ArrayStack<T> implements StackADT<T> {
     @Override
     public T pop() throws EmptyCollectionException {
         T result = peek();
-        size--;
+        array[--size] = null;
 
         return result;
     }
