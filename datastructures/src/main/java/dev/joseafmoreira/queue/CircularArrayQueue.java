@@ -118,7 +118,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     }
 
     /**
-     * Expands the capacity of the array used by the stack.
+     * Expands the capacity of the array used by this queue.
      * If the current array length is less than 2, the new array length will be increased by 1.
      * Otherwise, the new array length will be increased by half of the current array length.
      */

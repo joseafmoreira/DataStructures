@@ -12,7 +12,7 @@ import dev.joseafmoreira.node.Node;
  * The {@code LinkedQueue} class that implements the {@link QueueADT QueueADT} interface.
  * </p>
  * <p>
- * The {@code LinkedQueue} is implemented using linked {@link Node nodes}
+ * The {@code LinkedQueue} is implemented using single linked {@link Node nodes}
  * </p>
  * <p>
  * Author: joseafmoreira

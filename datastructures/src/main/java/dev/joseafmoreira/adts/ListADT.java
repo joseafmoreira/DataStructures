@@ -1,6 +1,9 @@
 package dev.joseafmoreira.adts;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+import dev.joseafmoreira.exceptions.EmptyCollectionException;
 
 /**
  * <h2>
@@ -21,37 +24,44 @@ public interface ListADT<T> extends Iterable<T> {
      * Removes and returns the first element from this list.
      *
      * @return the first element in this list
+     * @throws EmptyCollectionException if this list is empty
      */
-    T removeFirst();
+    T removeFirst() throws EmptyCollectionException;
 
     /**
      * Removes and returns the last element from this list.
      *
      * @return the last element from this list
+     * @throws EmptyCollectionException if this list is empty
      */
-    T removeLast();
+    T removeLast() throws EmptyCollectionException;
 
     /**
      * Removes the specified element from this list, if it is present.
      *
      * @param element the element to be removed from this list
      * @return the removed element
+     * @throws NullPointerException if the element is null
+     * @throws EmptyCollectionException if this list is empty
+     * @throws NoSuchElementException if this list doesn't contain the specified element
      */
-    T remove(T element);
+    T remove(T element) throws NullPointerException, EmptyCollectionException, NoSuchElementException;
 
     /**
      * Returns the first element in this list.
      *
      * @return the first element in this list
+     * @throws EmptyCollectionException if this list is empty
      */
-    T first();
+    T first() throws EmptyCollectionException;
 
     /**
      * Returns the last element in this list.
      *
      * @return the last element in this list
+     * @throws EmptyCollectionException if this list is empty
      */
-    T last();
+    T last() throws EmptyCollectionException;
 
     /**
      * Checks if this list contains a specific element.

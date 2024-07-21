@@ -38,15 +38,6 @@ public class Node<T> {
     }
 
     /**
-     * Instantiate a new node object with the specified next node reference
-     * 
-     * @param next the next node's reference
-     */
-    public Node(Node<T> next) {
-        this(null, next);
-    }
-
-    /**
      * Instantiate a new node object with the specified element and next node reference
      * 
      * @param element the specified element
