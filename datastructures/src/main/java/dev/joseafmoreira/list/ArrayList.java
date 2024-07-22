@@ -1,9 +1,11 @@
 package dev.joseafmoreira.list;
 
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import dev.joseafmoreira.adts.ListADT;
 import dev.joseafmoreira.exceptions.EmptyCollectionException;
+import dev.joseafmoreira.adts.ListADT;
 
 /**
  * <h2>
@@ -32,6 +34,10 @@ public abstract class ArrayList<T> implements ListADT<T> {
      * This represents the number of elements in this list
      */
     protected int size;
+    /**
+     * This represents the number of modifications made in this list
+     */
+    private int modCount;
 
     /**
      * Instantiate an empty ArrayList object
@@ -49,6 +55,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public ArrayList(int initialCapacity) {
         array = (T[]) new Object[Math.max(initialCapacity, 0)];
         size = 0;
+        modCount = 0;
     }
 
     /**
@@ -60,6 +67,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
         array[0] = null;
         for (int i = 0; i < size() - 1; i++) array[i] = array[i + 1];
         size--;
+        modCount++;
 
         return result;
     }
@@ -71,6 +79,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public T removeLast() throws EmptyCollectionException {
         T result = last();
         array[--size] = null;
+        modCount++;
 
         return result;
     }
@@ -89,6 +98,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
                 for (int j = i; j < size() - 1; j++) {
                     array[j] = array[j + 1];
                 }
+                modCount++;
 
                 return target;
             }
@@ -147,6 +157,14 @@ public abstract class ArrayList<T> implements ListADT<T> {
      * {@inheritDoc}
      */
     @Override
+    public Iterator<T> iterator() {
+        return new ArrayListIterator();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
         if (!isEmpty()) for (int i = 0; i < size(); i++) result.append(array[i]).append((i == size() - 1) ? "" : ", ");
@@ -166,5 +184,75 @@ public abstract class ArrayList<T> implements ListADT<T> {
         for (int i = 0; i < size(); i++) newArray[i] = array[i];
 
         array = newArray;
+    }
+
+    /**
+     * <h2>
+     * ArrayListIterator
+     * </h2>
+     * <p>
+     * The {@code ArrayListIterator} class that implements the {@link Iterator Iterator} interface.
+     * </p>
+     * <p>
+     * Author: joseafmoreira
+     * </p>
+     */
+    private class ArrayListIterator implements Iterator<T> {
+        /**
+         * This represents the index of the current element
+         */
+        private int currentIndex;
+        /**
+         * This represents the expected number of modifications made in this list
+         */
+        private int expectedModCount;
+        /**
+         * This represents if the iterator can remove an element from the list or not
+         */
+        private boolean okToRemove;
+
+        /**
+         * Instantiate a new ArrayListIterator object
+         */
+        private ArrayListIterator() {
+            currentIndex = 0;
+            expectedModCount = modCount;
+            okToRemove = false;
+        }
+
+        /**
+         * {@inheritDoc}
+         * @throws ConcurrentModificationException if this list has been modified
+         */
+        @Override
+        public boolean hasNext() throws ConcurrentModificationException {
+            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been modified");
+
+            okToRemove = true;
+
+            return currentIndex < size();
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public T next() throws NoSuchElementException {
+            if (!hasNext()) throw new NoSuchElementException("Iteration out of elements");
+            
+            return array[currentIndex++];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void remove() throws IllegalStateException {
+            if (!okToRemove) throw new IllegalStateException("Invalid remove operation call");
+
+            ArrayList.this.remove(array[currentIndex - 1]);
+            expectedModCount++;
+            okToRemove = false;
+        }
     }
 }
