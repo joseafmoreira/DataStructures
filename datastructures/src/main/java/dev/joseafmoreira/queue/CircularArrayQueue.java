@@ -27,9 +27,9 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
      */
     protected T[] array;
     /**
-     * This represents the front index in this queue
+     * This represents the head index in this queue
      */
-    protected int frontIndex;
+    protected int head;
     /**
      * This represents the number of elements in this queue
      */
@@ -50,7 +50,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @SuppressWarnings("unchecked")
     public CircularArrayQueue(int initialCapacity) {
         array = (T[]) new Object[Math.max(initialCapacity, 0)];
-        frontIndex = 0;
+        head = 0;
         size = 0;
     }
 
@@ -62,7 +62,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
         if (element == null) throw new NullPointerException("Element can't be null");
         if (size() == array.length) expandCapacity();
 
-        array[(frontIndex + size) % array.length] = element;
+        array[(head + size()) % array.length] = element;
         size++;
     }
 
@@ -72,8 +72,8 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @Override
     public T dequeue() throws EmptyCollectionException {
         T result = first();
-        array[frontIndex] = null;
-        frontIndex = (frontIndex + 1) % array.length;
+        array[head] = null;
+        head = (head + 1) % array.length;
         size--;
 
         return result;
@@ -86,7 +86,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     public T first() throws EmptyCollectionException {
         if (isEmpty()) throw new EmptyCollectionException("Queue is empty");
 
-        return array[frontIndex];
+        return array[head];
     }
 
     /**
@@ -111,7 +111,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
-        if (!isEmpty()) for (int i = 0; i < size(); i++) result.append(array[(frontIndex + i) % array.length]).append(((frontIndex + i) % array.length == (frontIndex + size() - 1) % array.length) ? "" : ", ");
+        if (!isEmpty()) for (int i = 0; i < size(); i++) result.append(array[(head + i) % array.length]).append((((head + i) % array.length) == ((head + size() - 1) % array.length)) ? "" : ", ");
         result.append("]");
 
         return result.toString();
@@ -125,9 +125,9 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @SuppressWarnings("unchecked")
     private void expandCapacity() {
         T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
-        for (int i = 0; i < size(); i++) newArray[i] = array[(frontIndex + i) % array.length];
+        for (int i = 0; i < size(); i++) newArray[i] = array[(head + i) % array.length];
 
         array = newArray;
-        frontIndex = 0;
+        head = 0;
     }
 }

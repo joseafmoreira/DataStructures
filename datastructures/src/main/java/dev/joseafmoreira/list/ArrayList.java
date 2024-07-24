@@ -63,13 +63,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T removeFirst() throws EmptyCollectionException {
-        T result = first();
-        array[0] = null;
-        for (int i = 0; i < size() - 1; i++) array[i] = array[i + 1];
-        size--;
-        modCount++;
-
-        return result;
+        return remove(first());
     }
 
     /**
@@ -77,11 +71,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T removeLast() throws EmptyCollectionException {
-        T result = last();
-        array[--size] = null;
-        modCount++;
-
-        return result;
+        return remove(last());
     }
 
     /**
@@ -95,9 +85,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
         for (int i = 0; i < size(); i++) {
             if (array[i].equals(target)) {
                 array[i] = null;
-                for (int j = i; j < size() - 1; j++) {
-                    array[j] = array[j + 1];
-                }
+                for (int j = i; j < size() - 1; j++) array[j] = array[j + 1];
+                size--;
                 modCount++;
 
                 return target;
@@ -228,8 +217,6 @@ public abstract class ArrayList<T> implements ListADT<T> {
         public boolean hasNext() throws ConcurrentModificationException {
             if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been modified");
 
-            okToRemove = true;
-
             return currentIndex < size();
         }
 
@@ -239,6 +226,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
         @Override
         public T next() throws NoSuchElementException {
             if (!hasNext()) throw new NoSuchElementException("Iteration out of elements");
+
+            okToRemove = true;
             
             return array[currentIndex++];
         }
