@@ -38,7 +38,7 @@ public abstract class LinkedList<T> implements ListADT<T> {
     /**
      * This represents the number of modifications made in this list
      */
-    private int modCount;
+    protected int modCount;
 
     /**
      * Instantiate an empty LinkedList object

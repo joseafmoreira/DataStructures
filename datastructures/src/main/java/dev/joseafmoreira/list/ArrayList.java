@@ -25,7 +25,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     /**
      * This represents the default capacity of this list
      */
-    protected static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
     /**
      * This represents the arrays containing the elements of this list
      */
@@ -37,7 +37,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     /**
      * This represents the number of modifications made in this list
      */
-    private int modCount;
+    protected int modCount;
 
     /**
      * Instantiate an empty ArrayList object
