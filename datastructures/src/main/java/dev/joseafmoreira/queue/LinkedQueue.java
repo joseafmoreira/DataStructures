@@ -62,6 +62,7 @@ public class LinkedQueue<T> implements QueueADT<T> {
     public T dequeue() throws EmptyCollectionException {
         T result = first();
         head = head.getNext();
+        if (size() == 1) tail = head;
         size--;
 
         return result;

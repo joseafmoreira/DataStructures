@@ -19,6 +19,7 @@ public interface OrderedListADT<T> extends ListADT<T> {
      * Adds the specified element to this ordered list.
      *
      * @param element the element to be added to this ordered list
+     * @throws NullPointerException if the specified element is null
      */
-    void add(T element);
+    void add(T element) throws NullPointerException;
 }
