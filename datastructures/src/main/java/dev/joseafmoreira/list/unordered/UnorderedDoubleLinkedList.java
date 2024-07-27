@@ -90,5 +90,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
             else tail = newNode;
             currentNode.setNext(newNode);
         }
+        size++;
+        modCount++;
     }
 }
