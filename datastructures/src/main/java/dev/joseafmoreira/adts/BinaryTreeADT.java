@@ -1,6 +1,9 @@
 package dev.joseafmoreira.adts;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+import dev.joseafmoreira.exceptions.EmptyCollectionException;
 
 /**
  * <h2>
@@ -19,15 +22,17 @@ public interface BinaryTreeADT<T> {
      *
      * @return the root element of this binary tree
      */
-    T getRoot();
+    T getRoot() throws EmptyCollectionException;
 
     /**
      * Returns the element in this binary tree that matches the specified target.
      *
      * @param target the element to be found in this binary tree
      * @return the element in the binary tree that matches the specified target
+     * @throws NullPointerException if the specified target is null
+     * @throws NoSuchElementException if this binary tree doesn't contain the specified target
      */
-    T find(T target);
+    T find(T target) throws NullPointerException, NoSuchElementException;
 
     /**
      * Returns an iterator over the elements in this binary tree using the pre-order traversal.
@@ -62,8 +67,9 @@ public interface BinaryTreeADT<T> {
      *
      * @param target the element to be checked for containment in this binary tree
      * @return true if this binary tree contains the specified element, false otherwise
+     * @throws NullPointerException if the specified target is null
      */
-    boolean contains(T target);
+    boolean contains(T target) throws NullPointerException;
 
     /**
      * Checks if this binary tree is empty.

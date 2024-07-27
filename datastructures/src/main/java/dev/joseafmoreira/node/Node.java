@@ -91,6 +91,6 @@ public class Node<T> {
      */
     @Override
     public String toString() {
-        return element.toString();
+        return (element == null) ? "" : element.toString();
     }
 }

@@ -68,8 +68,9 @@ public interface ListADT<T> extends Iterable<T> {
      *
      * @param target the element to be checked for presence in this list
      * @return true if this list contains the specified element, false otherwise
+     * @throws NullPointerException if the specified target is null
      */
-    boolean contains(T target);
+    boolean contains(T target) throws NullPointerException;
 
     /**
      * Checks if this list is empty.
