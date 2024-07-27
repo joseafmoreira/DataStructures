@@ -78,20 +78,22 @@ public abstract class DoubleLinkedList<T> implements ListADT<T> {
         while (currentNode != null) {
             if (currentNode.getElement().equals(target)) {
                 if (currentNode == head) {
-                    head = currentNode.getNext();
-                    if (size() == 1) tail = head;
-                    else head.setPrev(null);
+                    head = head.getNext();
+                    if (head != null) head.setPrev(null);
+                    else tail = null;
+                } else if (currentNode == tail) {
+                    tail = tail.getPrev();
+                    tail.setNext(null);
                 } else {
                     currentNode.getPrev().setNext(currentNode.getNext());
-                    if (currentNode == tail) tail = currentNode.getPrev();
-                    else currentNode.getNext().setPrev(currentNode.getPrev());
+                    currentNode.getNext().setPrev(currentNode.getPrev());
                 }
                 size--;
                 modCount++;
 
                 return target;
             }
-            currentNode = currentNode.getNext();
+            currentNode = currentNode.getNext(); 
         }
 
         throw new NoSuchElementException("Target not found");

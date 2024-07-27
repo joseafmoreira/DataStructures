@@ -74,13 +74,13 @@ public abstract class LinkedList<T> implements ListADT<T> {
         if (target == null) throw new NullPointerException("Target is null");
         if (isEmpty()) throw new EmptyCollectionException("List is empty");
 
-        Node<T> currentNode = head;
         Node<T> previousNode = null;
+        Node<T> currentNode = head;
         while (currentNode != null) {
             if (currentNode.getElement().equals(target)) {
-                if (previousNode == null) {
-                    head = currentNode.getNext();
-                    if (size() == 1) tail = head;
+                if (currentNode == head) {
+                    head = head.getNext();
+                    if (head == null) tail = null;
                 } else {
                     previousNode.setNext(currentNode.getNext());
                     if (currentNode == tail) tail = previousNode;
@@ -188,13 +188,13 @@ public abstract class LinkedList<T> implements ListADT<T> {
      */
     private class LinkedListIterator implements Iterator<T> {
         /**
-         * This represents the current node of this LinkedListIterator
-         */
-        private Node<T> currentNode;
-        /**
          * This represents the previous node of the current node of this LinkedListIterator
          */
         private Node<T> previousNode;
+        /**
+         * This represents the current node of this LinkedListIterator
+         */
+        private Node<T> currentNode;
         /**
          * This represents the expected number of modifications made in this list
          */
@@ -208,8 +208,8 @@ public abstract class LinkedList<T> implements ListADT<T> {
          * Instantiate a new LinkedListIterator object
          */
         private LinkedListIterator() {
-            currentNode = head;
             previousNode = null;
+            currentNode = head;
             expectedModCount = modCount;
             okToRemove = false;
         }

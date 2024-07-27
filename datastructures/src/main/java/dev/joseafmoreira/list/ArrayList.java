@@ -85,8 +85,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
         for (int i = 0; i < size(); i++) {
             if (array[i].equals(target)) {
                 array[i] = null;
-                for (int j = i; j < size() - 1; j++) array[j] = array[j + 1];
-                size--;
+                for (int j = i; j < size() - 1; j++) array[j] = array[j + 1];      
+                array[--size] = null;
                 modCount++;
 
                 return target;

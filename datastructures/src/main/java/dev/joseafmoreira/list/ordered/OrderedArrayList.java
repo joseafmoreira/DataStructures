@@ -9,7 +9,7 @@ import dev.joseafmoreira.list.ArrayList;
  * OrderedArrayList
  * </h2>
  * <p>
- * The {@code OrderedArrayList} class that implements both the {@link OrderedListADT UnorderedListADT} and {@link ListADT ListADT} interface.
+ * The {@code OrderedArrayList} class that implements both the {@link OrderedListADT OrderedListADT} and {@link ListADT ListADT} interface.
  * </p>
  * <p>
  * The {@code OrderedArrayList} is implemented using the {@link ArrayList ArrayList} abstract class as the base {@link ListADT ListADT} implementation

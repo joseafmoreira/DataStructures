@@ -78,13 +78,13 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
     /**
      * Inserts the specified element at the specified position in this list.
      *
-     * @param index the index at which the specified element is to be inserted
+     * @param targetIndex the index at which the specified element is to be inserted
      * @param element the element to be inserted
      */
-    private void add(int index, T element) {
+    private void add(int targetIndex, T element) {
         if (size() == array.length) expandCapacity();
-        for (int i = size(); i > index; i--) array[i] = array[i - 1];
-        array[index] = element;
+        for (int i = size(); i > targetIndex; i--) array[i] = array[i - 1];
+        array[targetIndex] = element;
         size++;
         modCount++;
     }
