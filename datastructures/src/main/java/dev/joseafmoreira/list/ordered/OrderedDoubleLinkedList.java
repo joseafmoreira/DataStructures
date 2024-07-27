@@ -42,24 +42,20 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 
         Comparable<T> comparableElement = (Comparable<T>) element;
         DoubleNode<T> newNode = new DoubleNode<>(element);
-        if (isEmpty() || comparableElement.compareTo(head.getElement()) < 0) {
+        if (isEmpty() || comparableElement.compareTo(head.getElement()) <= 0) {
             newNode.setNext(head);
             if (head != null) head.setPrev(newNode);
+            else tail = newNode;
             head = newNode;
         } else {
-            DoubleNode<T> targetNode = null;
             DoubleNode<T> currentNode = head;
-            while (currentNode != null && comparableElement.compareTo(currentNode.getElement()) > 0) {
-                targetNode = currentNode;
-                currentNode = currentNode.getNext();
-            }
-            if (targetNode == null) head = newNode;
-            else targetNode.setNext(newNode);
-            newNode.setPrev(targetNode);
-            newNode.setNext(currentNode);
-            if (currentNode != null) currentNode.setPrev(newNode);
+            while (currentNode.getNext() != null && comparableElement.compareTo(currentNode.getNext().getElement()) > 0) currentNode = currentNode.getNext();
+            newNode.setNext(currentNode.getNext());
+            if (currentNode.getNext() != null) currentNode.getNext().setPrev(newNode);
+            else tail = newNode;
+            newNode.setPrev(currentNode);
+            currentNode.setNext(newNode);
         }
-        if (tail == null || comparableElement.compareTo(tail.getElement()) > 0) tail = newNode;
         size++;
         modCount++;
     }

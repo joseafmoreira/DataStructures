@@ -42,21 +42,17 @@ public class OrderedLinkedList<T> extends LinkedList<T> implements OrderedListAD
 
         Comparable<T> comparableElement = (Comparable<T>) element;
         Node<T> newNode = new Node<>(element);
-        if (isEmpty() || comparableElement.compareTo(head.getElement()) < 0) {
+        if (isEmpty() || comparableElement.compareTo(head.getElement()) <= 0) {
             newNode.setNext(head);
             head = newNode;
+            if (tail == null) tail = newNode;
         } else {
-            Node<T> targetNode = null;
             Node<T> currentNode = head;
-            while (currentNode != null && comparableElement.compareTo(currentNode.getElement()) > 0) {
-                targetNode = currentNode;
-                currentNode = currentNode.getNext();
-            }
-            if (targetNode == null) head = newNode;
-            else targetNode.setNext(newNode);
-            newNode.setNext(currentNode);
+            while (currentNode.getNext() != null && comparableElement.compareTo(currentNode.getNext().getElement()) > 0) currentNode = currentNode.getNext();
+            newNode.setNext(currentNode.getNext());
+            currentNode.setNext(newNode);
+            if (newNode.getNext() == null) tail = newNode;
         }
-        if (tail == null || comparableElement.compareTo(tail.getElement()) > 0) tail = newNode;
         size++;
         modCount++;
     }
