@@ -67,8 +67,8 @@ public class ArrayQueue<T> implements QueueADT<T> {
     public T dequeue() throws EmptyCollectionException {
         T result = first();
         array[0] = null;
-        for (int i = 0; i < size() - 1; i++) array[i] = array[i + 1];
         size--;
+        for (int i = 0; i < size(); i++) array[i] = array[i + 1];
 
         return result;
     }
