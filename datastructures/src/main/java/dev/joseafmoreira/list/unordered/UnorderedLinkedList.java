@@ -37,7 +37,7 @@ public class UnorderedLinkedList<T> extends LinkedList<T> implements UnorderedLi
     public void addToFront(T element) throws NullPointerException {
         if (element == null) throw new NullPointerException("Element can't be null");
 
-        add(head, element);
+        add(null, element);
     }
 
     /**
@@ -78,12 +78,10 @@ public class UnorderedLinkedList<T> extends LinkedList<T> implements UnorderedLi
      */
     private void add(Node<T> currentNode, T element) {
         Node<T> newNode = new Node<>(element);
-        if (isEmpty()) {
+        if (currentNode == null) {
+            newNode.setNext(head);
             head = newNode;
-            tail = head;
-        } else if (currentNode == head) {
-            newNode.setNext(currentNode);
-            head = newNode;
+            if (tail == null) tail = newNode;
         } else {
             newNode.setNext(currentNode.getNext());
             currentNode.setNext(newNode);

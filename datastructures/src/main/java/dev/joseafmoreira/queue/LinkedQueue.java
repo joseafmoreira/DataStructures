@@ -63,7 +63,7 @@ public class LinkedQueue<T> implements QueueADT<T> {
         T result = first();
         head = head.getNext();
         size--;
-        if (isEmpty()) tail = head;
+        if (isEmpty()) tail = null;
 
         return result;
     }

@@ -37,7 +37,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
     public void addToFront(T element) throws NullPointerException {
         if (element == null) throw new NullPointerException("Element can't be null");
 
-        add(head, element);
+        add(null, element);
     }
 
     /**
@@ -78,21 +78,17 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     private void add(DoubleNode<T> currentNode, T element) {
         DoubleNode<T> newNode = new DoubleNode<>(element);
-        if (isEmpty()) {
-            head = newNode;
-            tail = newNode;
-        } else if (currentNode == null) {
-            head.setPrev(newNode);
+        if (currentNode == null) {
             newNode.setNext(head);
+            if (head != null) head.setPrev(newNode);
+            else tail = newNode;
             head = newNode;
         } else {
             newNode.setNext(currentNode.getNext());
-            if (currentNode.getNext() != null) currentNode.getNext().setPrev(newNode);
-            currentNode.setNext(newNode);
             newNode.setPrev(currentNode);
-            if (currentNode == tail) tail = newNode;
+            if (currentNode.getNext() != null) currentNode.getNext().setPrev(newNode);
+            else tail = newNode;
+            currentNode.setNext(newNode);
         }
-        size++;
-        modCount++;
     }
 }
