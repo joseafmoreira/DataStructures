@@ -28,17 +28,12 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
     }
 
     /**
-     * Adds the specified element to this list in a sorted manner.
-     * The element is inserted at the correct position to maintain the list's order.
-     *
-     * @param element the element to be added to this list
-     * @throws NullPointerException if the specified element is null
-     * @throws ClassCastException if the specified element isn't comparable
+     * {@inheritDoc}
      */
     @SuppressWarnings("unchecked")
     @Override
     public void add(T element) throws NullPointerException, ClassCastException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
 
         Comparable<T> comparableElement = (Comparable<T>) element;
         DoubleNode<T> newNode = new DoubleNode<>(element);

@@ -26,11 +26,11 @@ import dev.joseafmoreira.queue.CircularArrayQueue;
  * Author: joseafmoreira
  * </p>
  */
-public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
+public abstract class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
     /**
      * This represents the default capacity of this binary tree
      */
-    private static final int DEFAULT_CAPACITY = 7;
+    protected static final int DEFAULT_CAPACITY = 7;
     /**
      * This represents the arrays containing the elements of this binary tree
      */
@@ -126,8 +126,8 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
             while (!queue.isEmpty()) {
                 currentIndex = queue.dequeue();
                 unorderedList.addToRear(array[currentIndex]);
-                if (array[2 * currentIndex + 1] != null) queue.enqueue(2 * currentIndex + 1);
-                if (array[2 * (currentIndex + 1)] != null) queue.enqueue(2 * (currentIndex + 1));
+                if (currentIndex < array.length && array[2 * currentIndex + 1] != null) queue.enqueue(2 * currentIndex + 1);
+                if (currentIndex < array.length && array[2 * (currentIndex + 1)] != null) queue.enqueue(2 * (currentIndex + 1));
             }
         }
 

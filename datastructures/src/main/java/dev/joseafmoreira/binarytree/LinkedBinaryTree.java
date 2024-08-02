@@ -26,7 +26,7 @@ import dev.joseafmoreira.queue.LinkedQueue;
  * Author: joseafmoreira
  * </p>
  */
-public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
+public abstract class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
     /**
      * This represents the root node of this binary tree
      */
@@ -249,7 +249,7 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
         /**
          * Instantiate an empty BinaryTreeNode object
          */
-        private BinaryTreeNode() {
+        public BinaryTreeNode() {
             this(null, null, null);
         }
 
@@ -258,7 +258,7 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
          * 
          * @param element the specified element
          */
-        private BinaryTreeNode(T element) {
+        public BinaryTreeNode(T element) {
             this(element, null, null);
         }
 

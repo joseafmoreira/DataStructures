@@ -35,7 +35,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     @Override
     public void addToFront(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
 
         add(null, element);
     }
@@ -45,7 +45,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     @Override
     public void addToRear(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
 
         add(tail, element);
     }
@@ -55,8 +55,8 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     @Override
     public void addAfter(T element, T target) throws NullPointerException, NoSuchElementException {
-        if (element == null) throw new NullPointerException("Element can't be null");
-        if (target == null) throw new NullPointerException("Target can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
+        if (target == null) throw new NullPointerException("Target is null");
 
         DoubleNode<T> targetNode = head;
         while (targetNode != null) {

@@ -41,7 +41,7 @@ public class LinkedStack<T> implements StackADT<T> {
      */
     @Override
     public void push(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
 
         head = new Node<>(element, head);
         size++;

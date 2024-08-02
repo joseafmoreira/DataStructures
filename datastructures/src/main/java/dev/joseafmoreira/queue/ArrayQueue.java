@@ -54,7 +54,7 @@ public class ArrayQueue<T> implements QueueADT<T> {
      */
     @Override
     public void enqueue(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
         if (size() == array.length) expandCapacity();
 
         array[size++] = element;

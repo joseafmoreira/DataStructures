@@ -20,6 +20,7 @@ public interface OrderedListADT<T> extends ListADT<T> {
      *
      * @param element the element to be added to this ordered list
      * @throws NullPointerException if the specified element is null
+     * @throws ClassCastException if the specified element isn't comparable
      */
-    void add(T element) throws NullPointerException;
+    void add(T element) throws NullPointerException, ClassCastException;
 }

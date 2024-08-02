@@ -42,7 +42,7 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public void addToFront(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
         
         add(0, element);
     }
@@ -52,7 +52,7 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public void addToRear(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
         
         add(size(), element);
     }
@@ -62,8 +62,8 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public void addAfter(T element, T target) throws NullPointerException, NoSuchElementException {
-        if (element == null) throw new NullPointerException("Element can't be null");
-        if (target == null) throw new NullPointerException("Target can't be null");
+        if (element == null) throw new NullPointerException("Element is null");
+        if (target == null) throw new NullPointerException("Target is null");
         
         for (int i = 0; i < size(); i++) {
             if (array[i].equals(target)) {
