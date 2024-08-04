@@ -1,4 +1,4 @@
-package pt.ipp.estg.ed.adts;
+package pt.ipp.estg.ed;
 
 /**
  * A stack is a linear abstract data type that follows the Last In, First Out (LIFO) principle 
@@ -9,13 +9,13 @@ package pt.ipp.estg.ed.adts;
  *  <li>{@link #push(Object)}: Adds an element to the top of this stack</li>
  *  <li>{@link #pop()}: Removes an element from the top of this stack</li>
  *  <li>{@link #peek()}: Returns the element from the top of this stack</li>
- *  <li>{@link #isEmpty()}: Check if this stack is empty</li>
+ *  <li>{@link #isEmpty()}: Checks if this stack is empty</li>
  *  <li>{@link #size()}: Returns the number of elements present in this stack</li>
  *  <li>{@link #toString()}: Returns a string representation of this stack</li>
  * </ul>
  * 
  * This interface is a member of the 
- * {@link pt.ipp.estg.ed Data Structures Framework}
+ * <i>Data Structures Framework</i>
  * 
  * <h3>StackADT</h3>
  * @param <T> the type of elements in this stack

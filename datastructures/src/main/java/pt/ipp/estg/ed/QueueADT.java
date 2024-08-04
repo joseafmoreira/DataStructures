@@ -1,4 +1,4 @@
-package pt.ipp.estg.ed.adts;
+package pt.ipp.estg.ed;
 
 /**
  * A queue is a linear abstract data type that follows the First In, First Out (FIFO) principle 
@@ -9,13 +9,13 @@ package pt.ipp.estg.ed.adts;
  *  <li>{@link #enqueue(Object)}: Adds an element to the rear of this queue</li>
  *  <li>{@link #dequeue()}: Removes an element from the front of this queue</li>
  *  <li>{@link #first()}: Returns the element from the front of this queue</li>
- *  <li>{@link #isEmpty()}: Check if this queue is empty</li>
+ *  <li>{@link #isEmpty()}: Checks if this queue is empty</li>
  *  <li>{@link #size()}: Returns the number of elements present in this queue</li>
  *  <li>{@link #toString()}: Returns a string representation of this queue</li>
  * </ul>
  * 
  * This interface is a member of the 
- * {@link pt.ipp.estg.ed Data Structures Framework}
+ * <i>Data Structures Framework</i>
  * 
  * <h3>QueueADT</h3>
  * @param <T> the type of elements in this queue
@@ -54,6 +54,7 @@ public interface QueueADT<T> {
 
     /**
      * Returns the number of elements present in this queue.
+     * 
      * @return the number of elements present in this queue
      */
     int size();
