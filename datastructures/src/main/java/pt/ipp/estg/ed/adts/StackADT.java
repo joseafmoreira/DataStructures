@@ -1,6 +1,4 @@
-package dev.joseafmoreira.adts;
-
-import dev.joseafmoreira.exceptions.EmptyCollectionException;
+package pt.ipp.estg.ed.adts;
 
 /**
  * A stack is a linear abstract data type that follows the Last In, First Out (LIFO) principle 
@@ -16,35 +14,36 @@ import dev.joseafmoreira.exceptions.EmptyCollectionException;
  *  <li>{@link #toString()}: Returns a string representation of this stack</li>
  * </ul>
  * 
- * @param <T> the type of elements in this stack
+ * This interface is a member of the 
+ * {@link pt.ipp.estg.ed Data Structures Framework}
  * 
- * @author ESTG-ED-2122
- * @version 1.0
+ * <h3>StackADT</h3>
+ * @param <T> the type of elements in this stack
+ * @since 1.0
+ * @version 2.0
+ * @author ESTG-ED
  */
 public interface StackADT<T> {
     /**
-     * Adds an element to the top of this stack
+     * Adds an element to the top of this stack.
      * 
      * @param element the element to be added
-     * @throws NullPointerException if the element is null
      */
-    void push(T element) throws NullPointerException;
+    void push(T element);
 
     /**
-     * Removes an element from the top of this stack
-     * 
-     * @return The removed element
-     * @throws EmptyCollectionException if this stack is empty
-     */
-    T pop() throws EmptyCollectionException;
-
-    /**
-     * Returns the element from the top of this stack
+     * Removes an element from the top of this stack.
      * 
      * @return the element from the top of this stack
-     * @throws EmptyCollectionException if this stack is empty
      */
-    T peek() throws EmptyCollectionException;
+    T pop();
+
+    /**
+     * Returns the element from the top of this stack.
+     * 
+     * @return the element from the top of this stack
+     */
+    T peek();
 
     /**
      * Checks if this stack is empty.
@@ -54,14 +53,14 @@ public interface StackADT<T> {
     boolean isEmpty();
 
     /**
-     * Returns the number of elements present in this stack
+     * Returns the number of elements present in this stack.
      * 
      * @return the number of elements present in this stack
      */
     int size();
 
     /**
-     * Returns a string representation of this stack
+     * Returns a string representation of this stack.
      * 
      * @return a string representation of this stack
      */

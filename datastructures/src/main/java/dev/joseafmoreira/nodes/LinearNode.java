@@ -22,10 +22,10 @@ package dev.joseafmoreira.nodes;
  *  <li>{@link #toString()}: Returns a string representation of this linear node</li>
  * </ul>
  * 
+ * <h3>LinearNode</h3>
  * @param <T> the type of element stored in this linear node
- * 
- * @author ESTG-ED-2122
  * @version 1.0
+ * @author joseafmoreira
  */
 public class LinearNode<T> {
     /**

@@ -25,10 +25,10 @@ package dev.joseafmoreira.nodes;
  *  <li>{@link #equals(Object)}: Compares this double linear node with the specified object for equality</li>
  * </ul>
  * 
+ * <h3>DoubleLinearNode</h3>
  * @param <T> the type of element stored in this double linear node
- * 
- * @author ESTG-ED-2122
  * @version 1.0
+ * @author joseafmoreira
  * @see LinearNode
  */
 public class DoubleLinearNode<T> extends LinearNode<T> {
