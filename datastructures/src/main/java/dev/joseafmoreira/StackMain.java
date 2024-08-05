@@ -1,12 +1,12 @@
 package dev.joseafmoreira;
 
-import dev.joseafmoreira.stacks.ArrayStack;
-import dev.joseafmoreira.stacks.LinkedStack;
+import dev.joseafmoreira.abstractdatatypes.stacks.ArrayStack;
+import dev.joseafmoreira.abstractdatatypes.stacks.LinkedStack;
 import pt.ipp.estg.ed.StackADT;
 
-public class Stack {
+public class StackMain {
     public static void main(String[] args) {
-        StackADT<Integer> stack = new LinkedStack<>();
+        StackADT<Integer> stack = new ArrayStack<>();
         System.out.println(stack.isEmpty());
         System.out.println(stack.size());
         System.out.println(stack);

@@ -1,4 +1,4 @@
-package dev.joseafmoreira.stacks;
+package dev.joseafmoreira.abstractdatatypes.stacks;
 
 import dev.joseafmoreira.exceptions.EmptyCollectionException;
 import pt.ipp.estg.ed.StackADT;
