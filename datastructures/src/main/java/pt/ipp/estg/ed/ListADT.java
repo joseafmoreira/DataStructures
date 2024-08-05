@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * A list is a linear abstract data type that is more flexible than the stack and the queue 
  * meaning that you can add, remove and search elements on the list without restrictions. <p>
- * There will be two types of lists implemented: <p>
+ * There will be two base types of lists implemented: <p>
  * <ul>
  *  <li>Ordered</li>
  *  <li>Unordered</li>
@@ -81,7 +81,7 @@ public interface ListADT<T> extends Iterable<T> {
     T last();
 
     /**
-     * Checks if the list contains a specified element.
+     * Checks if this list contains a specified element.
      * 
      * @param target the target to search
      * @return true if this list contains the target, false otherwise

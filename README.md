@@ -8,6 +8,6 @@ This project implements, in Java, the following data structures:
 - Tree
     - Binary 
         - Search
-        - Heap
+        - Min-Heap
 - Graph
     - Network (or Digraph)
