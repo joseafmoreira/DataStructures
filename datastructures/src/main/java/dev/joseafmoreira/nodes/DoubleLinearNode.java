@@ -27,6 +27,7 @@ package dev.joseafmoreira.nodes;
  * 
  * <h3>DoubleLinearNode</h3>
  * @param <T> the type of element stored in this double linear node
+ * @since 1.0
  * @version 1.0
  * @author joseafmoreira
  * @see LinearNode

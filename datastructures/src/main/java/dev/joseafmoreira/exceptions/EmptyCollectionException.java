@@ -1,9 +1,8 @@
 package dev.joseafmoreira.exceptions;
 
 /**
- * {@code EmptyCollectionException} is an unchecked exception that 
- * can be thrown by some methods of a collection indicating that 
- * it has no elements. <p>
+ * Unchecked exception that can be thrown by some methods 
+ * of a collection indicating that it has no elements. <p>
  * 
  * The available constructors are the following: <p>
  * <ul>
@@ -12,6 +11,7 @@ package dev.joseafmoreira.exceptions;
  * </ul>
  * 
  * <h3>EmptyCollectionException</h3>
+ * @since 1.0
  * @version 1.0
  * @author joseafmoreira
  * @see RuntimeException

@@ -24,6 +24,7 @@ package dev.joseafmoreira.nodes;
  * 
  * <h3>LinearNode</h3>
  * @param <T> the type of element stored in this linear node
+ * @since 1.0
  * @version 1.0
  * @author joseafmoreira
  */
