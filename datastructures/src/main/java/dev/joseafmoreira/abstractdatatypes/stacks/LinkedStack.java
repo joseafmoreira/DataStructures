@@ -25,6 +25,9 @@ public class LinkedStack<T> implements StackADT<T> {
      */
     protected int size;
 
+    /**
+     * Constructs an empty LinkedStack object
+     */
     public LinkedStack() {
         top = null;
         size = 0;
