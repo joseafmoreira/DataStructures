@@ -1,6 +1,8 @@
 package dev.joseafmoreira.abstractdatatypes.lists;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import dev.joseafmoreira.exceptions.EmptyCollectionException;
 import pt.ipp.estg.ed.ListADT;
@@ -15,7 +17,7 @@ import pt.ipp.estg.ed.ListADT;
  * @author joseafmoreira
  * @see ListADT
  */
-public class ArrayList<T> implements ListADT<T> {
+public abstract class ArrayList<T> implements ListADT<T> {
     /**
      * The default capacity of this list array
      */
@@ -59,7 +61,12 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T removeFirst() throws EmptyCollectionException {
-        return null;
+        T result = first();
+        for (int i = 0; i < size() - 1; i++) array[i] = array[i + 1];
+        array[--size] = null;
+        modCount++;
+
+        return result;
     }
 
     /**
@@ -69,7 +76,11 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T removeLast() throws EmptyCollectionException {
-        return null;
+        T result = last();
+        array[--size] = null;
+        modCount++;
+
+        return result;
     }
 
     /**
@@ -77,10 +88,28 @@ public class ArrayList<T> implements ListADT<T> {
      * 
      * @throws NullPointerException if the target is null
      * @throws EmptyCollectionException if this list is empty
+     * @throws NoSuchElementException if the target isn't on the list
      */
     @Override
-    public T remove(T target) throws NullPointerException, EmptyCollectionException {
-        return null;
+    public T remove(T target) throws NullPointerException, EmptyCollectionException, NoSuchElementException {
+        if (target == null) throw new NullPointerException("Target is null");
+
+        if (first().equals(target)) return removeFirst();
+        if (last().equals(target)) return removeLast();
+        for (int i = 1; i < size() - 1; i++) {
+            if (array[i].equals(target)) {
+                array[i] = null;
+                for (int j = i; j < size() - 1; j++) {
+                    array[j] = array[j + 1];
+                }
+                array[--size] = null;
+                modCount++;
+
+                return target;
+            }
+        }
+        
+        throw new NoSuchElementException("Element not found");
     }
 
     /**
@@ -90,7 +119,9 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T first() throws EmptyCollectionException {
-        return null;
+        if (isEmpty()) throw new EmptyCollectionException("List is empty");
+
+        return array[0];
     }
 
     /**
@@ -100,14 +131,21 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T last() throws EmptyCollectionException {
-        return null;
+        if (isEmpty()) throw new EmptyCollectionException("List is empty");
+
+        return array[size() - 1];
     }
 
     /**
      * {@inheritDoc}
+     * 
+     * @throws NullPointerException if the target is null
      */
     @Override
     public boolean contains(T target) {
+        if (target == null) throw new NullPointerException("Target is null");
+
+        for (int i = 0; i < size(); i++) if (array[i].equals(target)) return true;
         return false;
     }
 
@@ -132,7 +170,7 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new ArrayIterator();
     }
 
     /**
@@ -140,7 +178,11 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i < size(); i++) result.append(array[i]).append((i < size() - 1) ? ", " : "");
+        result.append("]");
+
+        return result.toString();
     }
 
     /**
@@ -154,5 +196,68 @@ public class ArrayList<T> implements ListADT<T> {
         T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
         for (int i = 0; i < size(); i++) newArray[i] = array[i];
         array = newArray;
+    }
+
+    /**
+     * {@code Iterator} implementation for the {@code ArrayList} class
+     */
+    public class ArrayIterator implements Iterator<T> {
+        /**
+         * The current index of this list array
+         */
+        protected int currentIndex;
+        /**
+         * The expected number of modifications made to this list
+         */
+        protected int expectedModCount;
+        /**
+         * The flag indicating if it's ok to call the remove method
+         */
+        protected boolean okToRemove;
+
+        /**
+         * Constructs an empty ArrayIterator object.
+         */
+        public ArrayIterator() {
+            currentIndex = 0;
+            expectedModCount = modCount;
+            okToRemove = false;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean hasNext() {
+            return currentIndex < size();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @throws ConcurrentModificationException if this list has been altered
+         */
+        @Override
+        public T next() throws ConcurrentModificationException {
+            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
+
+            okToRemove = true;
+            return array[currentIndex++];
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @throws ConcurrentModificationException if this list has been altered
+         */
+        @Override
+        public void remove() throws ConcurrentModificationException, IllegalStateException {
+            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
+            if (!okToRemove) throw new IllegalStateException("Invalid remove call");
+
+            ArrayList.this.remove(array[--currentIndex]);
+            expectedModCount++;
+            okToRemove = false;
+        }
     }
 }
