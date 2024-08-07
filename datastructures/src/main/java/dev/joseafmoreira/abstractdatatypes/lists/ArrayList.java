@@ -36,14 +36,14 @@ public abstract class ArrayList<T> implements ListADT<T> {
     protected int modCount;
 
     /**
-     * Constructs an empty ArrayStack with a default capacity.
+     * Constructs an empty ArrayList with a default capacity.
      */
     public ArrayList() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
-     * Constructs an empty ArrayStack with a specified initial capacity.
+     * Constructs an empty ArrayList with a specified initial capacity.
      * 
      * @param initialCapacity the initial capacity (Minimum value is 0)
      */
@@ -109,7 +109,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
             }
         }
         
-        throw new NoSuchElementException("Element not found");
+        throw new NoSuchElementException("Target not found");
     }
 
     /**
