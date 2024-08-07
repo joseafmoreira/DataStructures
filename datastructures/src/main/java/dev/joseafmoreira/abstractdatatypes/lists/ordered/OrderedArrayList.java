@@ -50,6 +50,7 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
             if (comparableElement.compareTo(array[i]) <= 0) {
                 for (int j = size(); j > i; j--) array[j] = array[j - 1];
                 addingIndex = i;
+                break;
             }
         }
         array[addingIndex] = element;
