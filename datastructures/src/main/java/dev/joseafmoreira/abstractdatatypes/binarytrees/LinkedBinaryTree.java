@@ -46,7 +46,7 @@ public abstract class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
      */
     @Override
     public T getRoot() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("Binary Tree is empty");
+        if (isEmpty()) throw new EmptyCollectionException("Binary tree is empty");
 
         return root.getElement();
     }
@@ -69,6 +69,8 @@ public abstract class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
 
     /**
      * {@inheritDoc}
+     * 
+     * @throws NullPointerException if the target is null
      */
     @Override
     public boolean contains(T target) throws NullPointerException {

@@ -9,7 +9,7 @@ import java.util.Iterator;
  * There will be two base types of binary trees implemented: <p>
  * <ul>
  *  <li>Search</li>
- *  <li>Min-Heap</li>
+ *  <li>Minheap</li>
  * </ul>
  * For this interface, it's only specified the common operations between both binary trees leaving the 
  * unique methods for the search and the min-heap binary trees in the 
