@@ -88,7 +88,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
      * 
      * @throws NullPointerException if the target is null
      * @throws EmptyCollectionException if this list is empty
-     * @throws NoSuchElementException if the target isn't on the list
+     * @throws NoSuchElementException if the target isn't on this list
      */
     @Override
     public T remove(T target) throws NullPointerException, EmptyCollectionException, NoSuchElementException {

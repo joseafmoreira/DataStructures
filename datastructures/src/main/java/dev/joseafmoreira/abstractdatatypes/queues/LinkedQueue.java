@@ -30,7 +30,7 @@ public class LinkedQueue<T> implements QueueADT<T> {
     protected int size;
 
     /**
-     * Constructs an empty LinkedQueue object
+     * Constructs an empty LinkedQueue object.
      */
     public LinkedQueue() {
         front = null;

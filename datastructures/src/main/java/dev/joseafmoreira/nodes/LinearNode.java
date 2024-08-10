@@ -140,7 +140,7 @@ public class LinearNode<T> {
     }
 
     /**
-     * Returns a string representation of this linear node
+     * Returns a string representation of this linear node.
      * 
      * @return a string representation of this linear node
      */
