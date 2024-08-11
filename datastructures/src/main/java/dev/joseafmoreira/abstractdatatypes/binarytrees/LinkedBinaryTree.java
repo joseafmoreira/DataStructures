@@ -12,7 +12,7 @@ import pt.ipp.estg.ed.QueueADT;
 import pt.ipp.estg.ed.UnorderedListADT;
 
 /**
- * Linked implementation of the {@code BinaryTreeADT} interface
+ * Linked implementation of the {@code BinaryTreeADT} interface.
  * 
  * <h3>LinkedBinaryTree</h3>
  * @param <T> the type of element stored in this binary tree

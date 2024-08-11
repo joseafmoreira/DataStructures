@@ -7,7 +7,7 @@ import pt.ipp.estg.ed.HeapADT;
 
 /**
  * Linked implementation of the {@code HeapADT} interface
- * using the {@code LinkedBinaryTree} abstract class as a base code
+ * using the {@code LinkedBinaryTree} abstract class as a base code.
  * 
  * <h3>LinkedHeap</h3>
  * @param <T> the type of element stored in this minheap

@@ -8,7 +8,7 @@ import dev.joseafmoreira.exceptions.EmptyCollectionException;
 import pt.ipp.estg.ed.ListADT;
 
 /**
- * Resizable-array implementation of the {@code ListADT} interface
+ * Resizable-array implementation of the {@code ListADT} interface.
  * 
  * <h3>ArrayList</h3>
  * @param <T> the type of element stored in this list

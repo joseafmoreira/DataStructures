@@ -5,7 +5,7 @@ import pt.ipp.estg.ed.OrderedListADT;
 
 /**
  * Resizable-array implementation of the {@code UnorderedListADT} interface 
- * using the {@code ArrayList} abstract class as a base code
+ * using the {@code ArrayList} abstract class as a base code.
  * 
  * <h3>UnorderedArrayList</h3>
  * @param <T> the type of element stored in this ordered list

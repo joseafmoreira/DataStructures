@@ -9,7 +9,7 @@ import pt.ipp.estg.ed.BinarySearchTreeADT;
 
 /**
  * Linked implementation of the {@code BinarySearchTreeADT} interface
- * using the {@code LinkedBinaryTree} abstract class as a base code
+ * using the {@code LinkedBinaryTree} abstract class as a base code.
  * 
  * <h3>LinkedBinarySearchTree</h3>
  * @param <T> the type of element stored in this binary search tree
