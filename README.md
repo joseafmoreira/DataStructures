@@ -10,4 +10,8 @@ This project implements, in Java, the following data structures:
         - Search
         - Min-Heap
 - Graph
-    - Network (or Digraph)
+    - Undirected
+    - Directed
+- Network
+    - Undirected
+    - Directed
