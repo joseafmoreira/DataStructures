@@ -1,0 +1,126 @@
+{
+    "divisions": [
+        {
+            "name": "Emergency Room",
+            "maxCapacity": 10,
+            "allowedTitles": ["Medic", "Nurse", "Patient"],
+            "isExit": false
+        },
+        {
+            "name": "Operating Room",
+            "maxCapacity": 5,
+            "allowedTitles": ["Medic", "Nurse", "Patient"],
+            "isExit": false
+        },
+        {
+            "name": "Intensive Care Unit",
+            "maxCapacity": 8,
+            "allowedTitles": ["Medic", "Nurse", "Patient", "Visitor"],
+            "isExit": false
+        },
+        {
+            "name": "Patient Room",
+            "maxCapacity": 3,
+            "allowedTitles": ["Medic", "Nurse", "Patient", "Visitor"],
+            "isExit": false
+        },
+        {
+            "name": "Radiology",
+            "maxCapacity": 6,
+            "allowedTitles": ["Medic", "Nurse", "Patient"],
+            "isExit": false
+        },
+        {
+            "name": "Pharmacy",
+            "maxCapacity": 4,
+            "allowedTitles": ["Medic", "Nurse"],
+            "isExit": false
+        },
+        {
+            "name": "Laboratory",
+            "maxCapacity": 6,
+            "allowedTitles": ["Medic", "Nurse"],
+            "isExit": false
+        },
+        {
+            "name": "Reception",
+            "maxCapacity": 20,
+            "allowedTitles": ["Administrative", "Medic", "Nurse", "Patient", "Visitor"],
+            "isExit": false
+        },
+        {
+            "name": "Administration Office",
+            "maxCapacity": 10,
+            "allowedTitles": ["Administrative", "Medic"],
+            "isExit": false
+        },
+        {
+            "name": "Exit",
+            "maxCapacity": 0,
+            "allowedTitles": ["Administrative", "Medic", "Nurse", "Patient", "Visitor"],
+            "isExit": true
+        }
+    ],
+    "edges": [
+        {
+            "from": "Emergency Room",
+            "to": "Operating Room",
+            "weight": 2
+        },
+        {
+            "from": "Emergency Room",
+            "to": "Intensive Care Unit",
+            "weight": 3
+        },
+        {
+            "from": "Emergency Room",
+            "to": "Reception",
+            "weight": 1
+        },
+        {
+            "from": "Operating Room",
+            "to": "Intensive Care Unit",
+            "weight": 2
+        },
+        {
+            "from": "Intensive Care Unit",
+            "to": "Patient Room",
+            "weight": 2
+        },
+        {
+            "from": "Patient Room",
+            "to": "Radiology",
+            "weight": 4
+        },
+        {
+            "from": "Radiology",
+            "to": "Pharmacy",
+            "weight": 3
+        },
+        {
+            "from": "Radiology",
+            "to": "Laboratory",
+            "weight": 2
+        },
+        {
+            "from": "Pharmacy",
+            "to": "Laboratory",
+            "weight": 1
+        },
+        {
+            "from": "Reception",
+            "to": "Administration Office",
+            "weight": 2
+        },
+        {
+            "from": "Administration Office",
+            "to": "Exit",
+            "weight": 3
+        },
+        {
+            "from": "Reception",
+            "to": "Exit",
+            "weight": 4
+        }
+    ]
+}
