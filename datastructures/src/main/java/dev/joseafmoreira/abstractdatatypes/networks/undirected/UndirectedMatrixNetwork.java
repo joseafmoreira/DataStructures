@@ -17,6 +17,22 @@ import dev.joseafmoreira.abstractdatatypes.networks.MatrixNetwork;
  */
 public class UndirectedMatrixNetwork<T> extends MatrixNetwork<T> {
     /**
+     * Constructs an empty UndirectedMatrixNetwork with a default capacity.
+     */
+    public UndirectedMatrixNetwork() {
+        super();
+    }
+
+    /**
+     * Constructs an empty UndirectedMatrixNetwork with a specified initial capacity.
+     * 
+     * @param initialCapacity the initial capacity (Minimum value is 0)
+     */
+    public UndirectedMatrixNetwork(int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @throws NullPointerException if the vertex1 and/or vertex2 are null

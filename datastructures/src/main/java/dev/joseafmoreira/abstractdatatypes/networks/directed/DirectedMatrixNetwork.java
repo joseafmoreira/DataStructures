@@ -17,6 +17,22 @@ import dev.joseafmoreira.abstractdatatypes.networks.MatrixNetwork;
  */
 public class DirectedMatrixNetwork<T> extends MatrixNetwork<T> {
     /**
+     * Constructs an empty DirectedMatrixNetwork with a default capacity.
+     */
+    public DirectedMatrixNetwork() {
+        super();
+    }
+
+    /**
+     * Constructs an empty DirectedMatrixNetwork with a specified initial capacity.
+     * 
+     * @param initialCapacity the initial capacity (Minimum value is 0)
+     */
+    public DirectedMatrixNetwork(int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @throws NullPointerException if the vertex1 and/or vertex2 are null

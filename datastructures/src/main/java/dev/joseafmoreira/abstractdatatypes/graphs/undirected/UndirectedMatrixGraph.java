@@ -17,6 +17,22 @@ import dev.joseafmoreira.abstractdatatypes.graphs.MatrixGraph;
  */
 public class UndirectedMatrixGraph<T> extends MatrixGraph<T> {
     /**
+     * Constructs an empty UndirectedMatrixGraph with a default capacity.
+     */
+    public UndirectedMatrixGraph() {
+        super();
+    }
+
+    /**
+     * Constructs an empty UndirectedMatrixGraph with a specified initial capacity.
+     * 
+     * @param initialCapacity the initial capacity (Minimum value is 0)
+     */
+    public UndirectedMatrixGraph(int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @throws NullPointerException if the vertex1 and/or vertex2 are null

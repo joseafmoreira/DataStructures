@@ -17,6 +17,22 @@ import dev.joseafmoreira.abstractdatatypes.graphs.MatrixGraph;
  */
 public class DirectedMatrixGraph<T> extends MatrixGraph<T> {
     /**
+     * Constructs an empty DirectedMatrixGraph with a default capacity.
+     */
+    public DirectedMatrixGraph() {
+        super();
+    }
+
+    /**
+     * Constructs an empty DirectedMatrixGraph with a specified initial capacity.
+     * 
+     * @param initialCapacity the initial capacity (Minimum value is 0)
+     */
+    public DirectedMatrixGraph(int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @throws NullPointerException if the vertex1 and/or vertex2 are null
