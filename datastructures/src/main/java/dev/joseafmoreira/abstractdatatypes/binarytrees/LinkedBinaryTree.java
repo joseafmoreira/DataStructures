@@ -157,6 +157,7 @@ public abstract class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
         StringBuilder result = new StringBuilder("[");
         Iterator<T> iterator = iteratorLevelOrder();
         while (iterator.hasNext()) result.append(iterator.next()).append((iterator.hasNext()) ? ", " : "");
+        result.append("]");
 
         return result.toString();
     }
