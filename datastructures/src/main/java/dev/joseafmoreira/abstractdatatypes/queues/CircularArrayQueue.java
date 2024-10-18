@@ -140,7 +140,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
         int j = 0;
         for (int i = frontIndex; i != rearIndex; i = (i + 1) % array.length) newArray[j++] = array[i];
         frontIndex = 0;
-        rearIndex = j;
+        rearIndex = --j;
         array = newArray;
     }
 }
