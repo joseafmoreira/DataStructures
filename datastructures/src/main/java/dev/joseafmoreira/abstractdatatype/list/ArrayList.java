@@ -190,9 +190,9 @@ public abstract class ArrayList<T> implements ListADT<T> {
     }
 
     /**
-     * Expands the capacity of the array used to store the elements in this list.
-     * If the current array length is 0 or 1, a new array with a capacity of the old length + 1 is created.
-     * Otherwise, a new array with a capacity increased by half of the current array's length is created.
+     * Expands the capacity of the array used to store the elements in this list. <p>
+     * If the current array length is 0 or 1, a new array with a capacity of the old length + 1 is created. <p>
+     * Otherwise, a new array with a capacity increased by half of the current array's length is created. <p>
      * The elements from the current array are copied to the new array.
      */
     @SuppressWarnings("unchecked")
