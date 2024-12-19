@@ -62,7 +62,9 @@ public abstract class ArrayList<T> implements ListADT<T> {
     @Override
     public T removeFirst() throws EmptyCollectionException {
         T result = first();
-        for (int i = 0; i < size() - 1; i++) array[i] = array[i + 1];
+        array[0] = null;
+        for (int i = 1; i < size() - 1; i++)
+            array[i - 1] = array[i];
         array[--size] = null;
         modCount++;
 
@@ -145,7 +147,9 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public boolean contains(T target) {
         if (target == null) throw new NullPointerException("Target is null");
 
-        for (int i = 0; i < size(); i++) if (array[i].equals(target)) return true;
+        for (int i = 0; i < size(); i++)
+            if (array[i].equals(target))
+                return true;
         return false;
     }
 
