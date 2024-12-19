@@ -3,6 +3,16 @@ package dev.joseafmoreira.abstractdatatype.queue;
 import dev.joseafmoreira.exception.EmptyCollectionException;
 import pt.ipp.estg.ed.QueueADT;
 
+/**
+ * Resizable-array implementation of the {@code QueueADT} interface.
+ * 
+ * <h3>ArrayQueue</h3>
+ * @param <T> the type of element stored in this queue
+ * @since 1.0
+ * @version 1.0
+ * @author joseafmoreira
+ * @see QueueADT
+ */
 public class ArrayQueue<T> implements QueueADT<T> {
     /**
      * The default capacity of this queue array
@@ -60,7 +70,7 @@ public class ArrayQueue<T> implements QueueADT<T> {
         for (int i = 1; i < size() - 1; i++)
             array[i - 1] = array[i];
         array[--size] = null;
-        
+
         return result;
     }
 

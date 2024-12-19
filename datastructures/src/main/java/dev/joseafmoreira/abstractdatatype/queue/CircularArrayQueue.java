@@ -3,6 +3,16 @@ package dev.joseafmoreira.abstractdatatype.queue;
 import dev.joseafmoreira.exception.EmptyCollectionException;
 import pt.ipp.estg.ed.QueueADT;
 
+/**
+ * Circular resizable-array implementation of the {@code QueueADT} interface.
+ * 
+ * <h3>ArrayQueue</h3>
+ * @param <T> the type of element stored in this queue
+ * @since 1.0
+ * @version 1.0
+ * @author joseafmoreira
+ * @see QueueADT
+ */
 public class CircularArrayQueue<T> implements QueueADT<T> {
     /**
      * The default capacity of this queue array
