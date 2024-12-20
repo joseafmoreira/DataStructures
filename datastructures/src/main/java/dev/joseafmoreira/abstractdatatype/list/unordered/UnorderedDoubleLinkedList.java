@@ -10,6 +10,7 @@ import pt.ipp.estg.ed.UnorderedListADT;
  * Doubly-linked list implementation of the {@code UnorderedListADT} interface.
  * 
  * <h3>UnorderedDoubleLinkedList</h3>
+ * 
  * @param <T> the type of element stored in this unordered list
  * @since 1.0
  * @version 1.0
@@ -32,10 +33,12 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     @Override
     public void addToFront(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
         head = new DoubleLinearNode<>(element, null, head);
-        head.getNext().setPrev(head);
+        if (head.getNext() != null)
+            head.getNext().setPrev(head);
         if (isEmpty())
             tail = head;
         size++;
@@ -49,7 +52,8 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     @Override
     public void addToRear(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
         if (isEmpty())
             addToFront(element);
@@ -69,11 +73,15 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
      */
     @Override
     public void addAfter(T element, T target) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
-        if (target == null) throw new NullPointerException("Target is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
+        if (target == null)
+            throw new NullPointerException("Target is null");
 
-        if (first().equals(target)) addToFront(element);
-        else if (last().equals(target)) addToRear(element);
+        if (first().equals(target))
+            addToFront(element);
+        else if (last().equals(target))
+            addToRear(element);
         else if (size() > 2) {
             DoubleLinearNode<T> currentNode = head.getNext();
             while (currentNode != tail) {

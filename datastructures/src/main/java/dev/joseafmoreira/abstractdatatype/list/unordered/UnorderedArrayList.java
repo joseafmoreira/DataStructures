@@ -6,10 +6,11 @@ import dev.joseafmoreira.abstractdatatype.list.ArrayList;
 import pt.ipp.estg.ed.UnorderedListADT;
 
 /**
- * Resizable-array implementation of the {@code UnorderedListADT} interface 
+ * Resizable-array implementation of the {@code UnorderedListADT} interface
  * using the {@code ArrayList} abstract class as a base code.
  * 
  * <h3>UnorderedArrayList</h3>
+ * 
  * @param <T> the type of element stored in this unordered list
  * @since 1.0
  * @version 1.0
@@ -41,10 +42,13 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public void addToFront(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
-        if (size() == array.length) expandCapacity();
-        for (int i = size(); i > 0; i--) array[i] = array[i - 1];
+        if (size() == array.length)
+            expandCapacity();
+        for (int i = size(); i > 0; i--)
+            array[i] = array[i - 1];
         array[0] = element;
         size++;
         modCount++;
@@ -57,9 +61,11 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public void addToRear(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
-        if (size() == array.length) expandCapacity();
+        if (size() == array.length)
+            expandCapacity();
         array[size++] = element;
         modCount++;
     }
@@ -71,13 +77,17 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public void addAfter(T element, T target) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
-        if (target == null) throw new NullPointerException("Target is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
+        if (target == null)
+            throw new NullPointerException("Target is null");
 
-        if (size() == array.length) expandCapacity();
+        if (size() == array.length)
+            expandCapacity();
         for (int i = 0; i < size(); i++) {
             if (array[i].equals(target)) {
-                for (int j = size(); j > i + 1; j--) array[j] = array[j - 1];
+                for (int j = size(); j > i + 1; j--)
+                    array[j] = array[j - 1];
                 array[i + 1] = element;
                 size++;
                 modCount++;

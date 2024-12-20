@@ -7,6 +7,7 @@ import pt.ipp.estg.ed.StackADT;
  * Resizable-array implementation of the {@code StackADT} interface.
  * 
  * <h3>ArrayStack</h3>
+ * 
  * @param <T> the type of element stored in this stack
  * @since 1.0
  * @version 1.0
@@ -52,9 +53,11 @@ public class ArrayStack<T> implements StackADT<T> {
      */
     @Override
     public void push(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
-        if (size() == array.length) expandCapacity();
+        if (size() == array.length)
+            expandCapacity();
         array[size++] = element;
     }
 
@@ -78,7 +81,8 @@ public class ArrayStack<T> implements StackADT<T> {
      */
     @Override
     public T peek() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("Stack is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("Stack is empty");
 
         return array[size() - 1];
     }
@@ -108,20 +112,26 @@ public class ArrayStack<T> implements StackADT<T> {
         for (int i = 0; i < size(); i++)
             result.append(array[i]).append((i < size() - 1) ? ", " : "");
         result.append("]");
-        
+
         return result.toString();
     }
 
     /**
-     * Expands the capacity of the array used to store the elements in this stack. <p>
-     * If the current array length is 0 or 1, a new array with a capacity of the old length + 1 is created. <p>
-     * Otherwise, a new array with a capacity increased by half of the current array's length is created. <p>
+     * Expands the capacity of the array used to store the elements in this stack.
+     * <p>
+     * If the current array length is 0 or 1, a new array with a capacity of the old
+     * length + 1 is created.
+     * <p>
+     * Otherwise, a new array with a capacity increased by half of the current
+     * array's length is created.
+     * <p>
      * The elements from the current array are copied to the new array.
      */
     @SuppressWarnings("unchecked")
     protected void expandCapacity() {
         T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
-        for (int i = 0; i < size(); i++) newArray[i] = array[i];
+        for (int i = 0; i < size(); i++)
+            newArray[i] = array[i];
         array = newArray;
     }
 }

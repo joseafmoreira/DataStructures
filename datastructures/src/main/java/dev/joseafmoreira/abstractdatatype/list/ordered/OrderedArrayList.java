@@ -4,10 +4,11 @@ import dev.joseafmoreira.abstractdatatype.list.ArrayList;
 import pt.ipp.estg.ed.OrderedListADT;
 
 /**
- * Resizable-array implementation of the {@code UnorderedListADT} interface 
+ * Resizable-array implementation of the {@code UnorderedListADT} interface
  * using the {@code ArrayList} abstract class as a base code.
  * 
  * <h3>UnorderedArrayList</h3>
+ * 
  * @param <T> the type of element stored in this ordered list
  * @since 1.0
  * @version 1.0
@@ -36,19 +37,22 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
      * {@inheritDoc}
      * 
      * @throws NullPointerException if the element is null
-     * @throws ClassCastException if the element isn't comparable
+     * @throws ClassCastException   if the element isn't comparable
      */
     @SuppressWarnings("unchecked")
     @Override
     public void add(T element) throws NullPointerException, ClassCastException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
-        if (size() == array.length) expandCapacity();
+        if (size() == array.length)
+            expandCapacity();
         int addingIndex = size();
         Comparable<T> comparableElement = (Comparable<T>) element;
         for (int i = 0; i < size(); i++) {
             if (comparableElement.compareTo(array[i]) <= 0) {
-                for (int j = size(); j > i; j--) array[j] = array[j - 1];
+                for (int j = size(); j > i; j--)
+                    array[j] = array[j - 1];
                 addingIndex = i;
                 break;
             }

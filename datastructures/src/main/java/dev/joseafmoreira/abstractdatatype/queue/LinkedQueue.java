@@ -8,6 +8,7 @@ import pt.ipp.estg.ed.QueueADT;
  * Singly-linked list implementation of the {@code QueueADT} interface.
  * 
  * <h3>LinkedQueue</h3>
+ * 
  * @param <T> the type of element stored in this queue
  * @since 1.0
  * @version 1.0
@@ -45,11 +46,14 @@ public class LinkedQueue<T> implements QueueADT<T> {
      */
     @Override
     public void enqueue(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
         LinearNode<T> newNode = new LinearNode<>(element);
-        if (rear == null) front = newNode;
-        else rear.setNext(newNode);
+        if (rear == null)
+            front = newNode;
+        else
+            rear.setNext(newNode);
         rear = newNode;
         size++;
     }
@@ -63,7 +67,8 @@ public class LinkedQueue<T> implements QueueADT<T> {
     public T dequeue() throws EmptyCollectionException {
         T result = first();
         front = front.getNext();
-        if (front == null) rear = null;
+        if (front == null)
+            rear = null;
         size--;
 
         return result;
@@ -76,7 +81,8 @@ public class LinkedQueue<T> implements QueueADT<T> {
      */
     @Override
     public T first() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("Queue is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("Queue is empty");
 
         return front.getElement();
     }

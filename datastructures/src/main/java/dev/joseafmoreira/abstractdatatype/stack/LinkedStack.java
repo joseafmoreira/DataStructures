@@ -8,6 +8,7 @@ import pt.ipp.estg.ed.StackADT;
  * Singly-linked list implementation of the {@code StackADT} interface.
  * 
  * <h3>LinkedStack</h3>
+ * 
  * @param <T> the type of element stored in this stack
  * @since 1.0
  * @version 1.0
@@ -40,7 +41,8 @@ public class LinkedStack<T> implements StackADT<T> {
      */
     @Override
     public void push(T element) throws NullPointerException {
-        if (element == null) throw new NullPointerException("Element is null");
+        if (element == null)
+            throw new NullPointerException("Element is null");
 
         top = new LinearNode<>(element, top);
         size++;
@@ -67,7 +69,8 @@ public class LinkedStack<T> implements StackADT<T> {
      */
     @Override
     public T peek() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("Stack is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("Stack is empty");
 
         return top.getElement();
     }
@@ -100,11 +103,14 @@ public class LinkedStack<T> implements StackADT<T> {
      * Recursively converts the elements of this stack to a string in reverse order.
      * 
      * @param currentNode the current node
-     * @return a string representation of the elements of this stack in reverse order
+     * @return a string representation of the elements of this stack in reverse
+     *         order
      */
     private String reverseToString(LinearNode<T> currentNode) {
-        if (currentNode == null) return "";
+        if (currentNode == null)
+            return "";
 
-        return reverseToString(currentNode.getNext()) + ((currentNode.getNext() == null) ? "" : ", ") + currentNode.getElement();
+        return reverseToString(currentNode.getNext()) + ((currentNode.getNext() == null) ? "" : ", ")
+                + currentNode.getElement();
     }
 }

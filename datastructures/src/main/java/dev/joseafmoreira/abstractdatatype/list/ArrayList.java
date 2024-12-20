@@ -11,6 +11,7 @@ import pt.ipp.estg.ed.ListADT;
  * Resizable-array implementation of the {@code ListADT} interface.
  * 
  * <h3>ArrayList</h3>
+ * 
  * @param <T> the type of element stored in this list
  * @since 1.0
  * @version 1.0
@@ -88,16 +89,19 @@ public abstract class ArrayList<T> implements ListADT<T> {
     /**
      * {@inheritDoc}
      * 
-     * @throws NullPointerException if the target is null
+     * @throws NullPointerException     if the target is null
      * @throws EmptyCollectionException if this list is empty
-     * @throws NoSuchElementException if the target isn't on this list
+     * @throws NoSuchElementException   if the target isn't on this list
      */
     @Override
     public T remove(T target) throws NullPointerException, EmptyCollectionException, NoSuchElementException {
-        if (target == null) throw new NullPointerException("Target is null");
+        if (target == null)
+            throw new NullPointerException("Target is null");
 
-        if (first().equals(target)) return removeFirst();
-        if (last().equals(target)) return removeLast();
+        if (first().equals(target))
+            return removeFirst();
+        if (last().equals(target))
+            return removeLast();
         for (int i = 1; i < size() - 1; i++) {
             if (array[i].equals(target)) {
                 array[i] = null;
@@ -110,7 +114,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
                 return target;
             }
         }
-        
+
         throw new NoSuchElementException("Target not found");
     }
 
@@ -121,7 +125,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T first() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("List is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
 
         return array[0];
     }
@@ -133,7 +138,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public T last() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("List is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
 
         return array[size() - 1];
     }
@@ -145,7 +151,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public boolean contains(T target) {
-        if (target == null) throw new NullPointerException("Target is null");
+        if (target == null)
+            throw new NullPointerException("Target is null");
 
         for (int i = 0; i < size(); i++)
             if (array[i].equals(target))
@@ -191,15 +198,21 @@ public abstract class ArrayList<T> implements ListADT<T> {
     }
 
     /**
-     * Expands the capacity of the array used to store the elements in this list. <p>
-     * If the current array length is 0 or 1, a new array with a capacity of the old length + 1 is created. <p>
-     * Otherwise, a new array with a capacity increased by half of the current array's length is created. <p>
+     * Expands the capacity of the array used to store the elements in this list.
+     * <p>
+     * If the current array length is 0 or 1, a new array with a capacity of the old
+     * length + 1 is created.
+     * <p>
+     * Otherwise, a new array with a capacity increased by half of the current
+     * array's length is created.
+     * <p>
      * The elements from the current array are copied to the new array.
      */
     @SuppressWarnings("unchecked")
     protected void expandCapacity() {
         T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
-        for (int i = 0; i < size(); i++) newArray[i] = array[i];
+        for (int i = 0; i < size(); i++)
+            newArray[i] = array[i];
         array = newArray;
     }
 
@@ -244,7 +257,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
          */
         @Override
         public T next() throws ConcurrentModificationException {
-            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
+            if (expectedModCount != modCount)
+                throw new ConcurrentModificationException("List has been altered");
 
             okToRemove = true;
             return array[currentIndex++];
@@ -257,8 +271,10 @@ public abstract class ArrayList<T> implements ListADT<T> {
          */
         @Override
         public void remove() throws ConcurrentModificationException, IllegalStateException {
-            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
-            if (!okToRemove) throw new IllegalStateException("Invalid remove call");
+            if (expectedModCount != modCount)
+                throw new ConcurrentModificationException("List has been altered");
+            if (!okToRemove)
+                throw new IllegalStateException("Invalid remove call");
 
             ArrayList.this.remove(array[--currentIndex]);
             expectedModCount++;

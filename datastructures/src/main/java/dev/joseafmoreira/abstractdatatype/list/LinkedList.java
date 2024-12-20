@@ -12,6 +12,7 @@ import pt.ipp.estg.ed.ListADT;
  * Singly-linked list implementation of the {@code ListADT} interface.
  * 
  * <h3>LinkedList</h3>
+ * 
  * @param <T> the type of element stored in this list
  * @since 1.0
  * @version 1.0
@@ -70,7 +71,7 @@ public class LinkedList<T> implements ListADT<T> {
     @Override
     public T removeLast() throws EmptyCollectionException {
         T result = last();
-        if (size() == 1) 
+        if (size() == 1)
             removeFirst();
         else {
             LinearNode<T> currentNode = head;
@@ -88,16 +89,19 @@ public class LinkedList<T> implements ListADT<T> {
     /**
      * {@inheritDoc}
      * 
-     * @throws NullPointerException if the target is null
+     * @throws NullPointerException     if the target is null
      * @throws EmptyCollectionException if this list is empty
-     * @throws NoSuchElementException if the target isn't on this list
+     * @throws NoSuchElementException   if the target isn't on this list
      */
     @Override
     public T remove(T target) throws NullPointerException, EmptyCollectionException, NoSuchElementException {
-        if (target == null) throw new NullPointerException("Target is null");
+        if (target == null)
+            throw new NullPointerException("Target is null");
 
-        if (first().equals(target)) return removeFirst();
-        if (last().equals(target)) return removeLast();
+        if (first().equals(target))
+            return removeFirst();
+        if (last().equals(target))
+            return removeLast();
         if (size() > 2) {
             LinearNode<T> previousNode = head;
             LinearNode<T> currentNode = head.getNext();
@@ -125,7 +129,8 @@ public class LinkedList<T> implements ListADT<T> {
      */
     @Override
     public T first() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("List is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
 
         return head.getElement();
     }
@@ -137,7 +142,8 @@ public class LinkedList<T> implements ListADT<T> {
      */
     @Override
     public T last() throws EmptyCollectionException {
-        if (isEmpty()) throw new EmptyCollectionException("List is empty");
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
 
         return tail.getElement();
     }
@@ -149,16 +155,18 @@ public class LinkedList<T> implements ListADT<T> {
      */
     @Override
     public boolean contains(T target) {
-        if (target == null) throw new NullPointerException("Target is null");
+        if (target == null)
+            throw new NullPointerException("Target is null");
 
         LinearNode<T> currentNode = head;
         while (currentNode != null) {
-            if (currentNode.getElement().equals(target)) 
+            if (currentNode.getElement().equals(target))
                 return true;
             currentNode = currentNode.getNext();
         }
         return false;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -240,7 +248,8 @@ public class LinkedList<T> implements ListADT<T> {
          */
         @Override
         public T next() throws ConcurrentModificationException {
-            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
+            if (expectedModCount != modCount)
+                throw new ConcurrentModificationException("List has been altered");
 
             T result = currentNode.getElement();
             okToRemove = true;
@@ -257,8 +266,10 @@ public class LinkedList<T> implements ListADT<T> {
          */
         @Override
         public void remove() throws ConcurrentModificationException, IllegalStateException {
-            if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
-            if (!okToRemove) throw new IllegalStateException("Invalid remove call");
+            if (expectedModCount != modCount)
+                throw new ConcurrentModificationException("List has been altered");
+            if (!okToRemove)
+                throw new IllegalStateException("Invalid remove call");
 
             LinkedList.this.remove(previousNode.getElement());
             expectedModCount++;
