@@ -64,7 +64,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public T removeFirst() throws EmptyCollectionException {
         T result = first();
         array[0] = null;
-        for (int i = 1; i < size() - 1; i++)
+        for (int i = 1; i < size(); i++)
             array[i - 1] = array[i];
         array[--size] = null;
         modCount++;

@@ -21,6 +21,7 @@ public class QueueTesting {
             System.out.println(queue);
 
             System.out.println("Removed element: " + queue.dequeue());
+            System.out.println(queue);
             System.out.println("Removed element: " + queue.dequeue());
             System.out.println(queue);
         } catch (EmptyCollectionException | NullPointerException e) {

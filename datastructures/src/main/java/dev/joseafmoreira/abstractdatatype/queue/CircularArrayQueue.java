@@ -81,6 +81,7 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @Override
     public T dequeue() throws EmptyCollectionException {
         T result = first();
+        array[first] = null;
         first = (isEmpty() ? 0 : (first + 1) % array.length);
         last = (isEmpty() ? 0 : last);
         size--;
@@ -123,8 +124,11 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
-        for (int i = 0; i < size(); i++)
-            result.append(array[i]).append((i < size() - 1) ? ", " : "");
+        int count = 0;
+        for (int i = first; count < size(); i = (i + 1) % array.length) {
+            result.append(array[i]).append((count < (size() - 1)) ? ", " : "");
+            count++;
+        }
         result.append("]");
 
         return result.toString();
@@ -144,8 +148,11 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     @SuppressWarnings("unchecked")
     protected void expandCapacity() {
         T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
-        for (int i = 0; i < size(); i++)
-            newArray[i] = array[i];
+        int count = 0;
+        for (int i = first; count < size(); i = (i + 1) % array.length)
+            newArray[count++] = array[i];
+        first = 0;
+        last = size();
         array = newArray;
     }
 }
