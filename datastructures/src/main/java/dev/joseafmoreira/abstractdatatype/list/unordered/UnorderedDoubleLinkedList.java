@@ -78,12 +78,11 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
         if (target == null)
             throw new NullPointerException("Target is null");
 
-        if (first().equals(target))
-            addToFront(element);
-        else if (last().equals(target))
+        if (last().equals(target)) {
             addToRear(element);
-        else if (size() > 2) {
-            DoubleLinearNode<T> currentNode = head.getNext();
+            return;
+        } else if (size() > 1) {
+            DoubleLinearNode<T> currentNode = head;
             while (currentNode != tail) {
                 if (currentNode.getElement().equals(target)) {
                     DoubleLinearNode<T> newNode = new DoubleLinearNode<>(element, currentNode, currentNode.getNext());
@@ -91,6 +90,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
                     newNode.getNext().setPrev(newNode);
                     size++;
                     modCount++;
+                    return;
                 }
                 currentNode = currentNode.getNext();
             }

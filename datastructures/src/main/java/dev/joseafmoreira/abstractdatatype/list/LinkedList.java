@@ -200,6 +200,7 @@ public class LinkedList<T> implements ListADT<T> {
         LinearNode<T> currentNode = head;
         while (currentNode != null) {
             result.append(currentNode.getElement()).append((currentNode != tail) ? ", " : "");
+            currentNode = currentNode.getNext();
         }
         result.append("]");
 

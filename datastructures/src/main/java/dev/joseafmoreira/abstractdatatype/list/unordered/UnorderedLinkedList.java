@@ -76,18 +76,18 @@ public class UnorderedLinkedList<T> extends LinkedList<T> implements UnorderedLi
         if (target == null)
             throw new NullPointerException("Target is null");
 
-        if (first().equals(target))
-            addToFront(element);
-        else if (last().equals(target))
+        if (last().equals(target)) {
             addToRear(element);
-        else if (size() > 2) {
-            LinearNode<T> currentNode = head.getNext();
+            return;
+        } else if (size() > 1) {
+            LinearNode<T> currentNode = head;
             while (currentNode != tail) {
                 if (currentNode.getElement().equals(target)) {
                     LinearNode<T> newNode = new LinearNode<>(element, currentNode.getNext());
                     currentNode.setNext(newNode);
                     size++;
                     modCount++;
+                    return;
                 }
                 currentNode = currentNode.getNext();
             }

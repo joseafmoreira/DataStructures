@@ -200,6 +200,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         DoubleLinearNode<T> currentNode = head;
         while (currentNode != null) {
             result.append(currentNode.getElement()).append((currentNode != tail) ? ", " : "");
+            currentNode = currentNode.getNext();
         }
         result.append("]");
 
