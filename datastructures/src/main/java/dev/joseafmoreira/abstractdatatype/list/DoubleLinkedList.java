@@ -57,8 +57,10 @@ public class DoubleLinkedList<T> implements ListADT<T> {
     public T removeFirst() throws EmptyCollectionException {
         T result = first();
         head = head.getNext();
-        head.getPrev().setNext(null);
-        head.setPrev(null);
+        if (head != null && head.getPrev() != null) {
+            head.getPrev().setNext(null);
+            head.setPrev(null);
+        }
         size--;
         modCount++;
 
@@ -207,6 +209,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         return result.toString();
     }
 
+    /**
+     * {@code Iterator} implementation for the {@code DoubleLinkedList} class
+     */
     private class DoubleLinkedListIterator implements Iterator<T> {
         /**
          * The current node of this double linked list

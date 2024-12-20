@@ -2,7 +2,6 @@ package dev.joseafmoreira;
 
 import dev.joseafmoreira.abstractdatatype.stack.ArrayStack;
 import dev.joseafmoreira.abstractdatatype.stack.LinkedStack;
-import dev.joseafmoreira.exception.EmptyCollectionException;
 import pt.ipp.estg.ed.StackADT;
 
 public class StackTesting {
@@ -11,19 +10,14 @@ public class StackTesting {
 
     public static void main(String[] args) {
         StackADT<Integer> stack = (CLASS.equals("ARRAY") ? new ArrayStack<>(CAPACITY) : new LinkedStack<>());
-        System.out.println(stack.getClass());
-        try {
-            stack.push(1);
-            stack.push(3);
-            stack.push(4);
-            stack.push(2);
-            System.out.println(stack);
+        stack.push(1);
+        stack.push(3);
+        stack.push(4);
+        stack.push(2);
+        System.out.println(stack);
 
-            System.out.println("Removed element: " + stack.pop());
-            System.out.println("Removed element: " + stack.pop());
-            System.out.println(stack);
-        } catch (EmptyCollectionException | NullPointerException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Removed element: " + stack.pop());
+        System.out.println("Removed element: " + stack.pop());
+        System.out.println(stack);
     }
 }

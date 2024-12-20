@@ -64,6 +64,7 @@ public class DoubleLinearNode<T> extends LinearNode<T> {
      */
     public DoubleLinearNode(T element, DoubleLinearNode<T> prev, DoubleLinearNode<T> next) {
         super(element, next);
+        setPrev(prev);
     }
 
     /**

@@ -207,6 +207,9 @@ public class LinkedList<T> implements ListADT<T> {
         return result.toString();
     }
 
+    /**
+     * {@code Iterator} implementation for the {@code LinkedList} class
+     */
     private class LinkedListIterator implements Iterator<T> {
         /**
          * The previous node of this linked list
