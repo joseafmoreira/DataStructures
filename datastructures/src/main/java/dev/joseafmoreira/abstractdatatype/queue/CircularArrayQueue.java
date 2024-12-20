@@ -37,6 +37,26 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     protected int last;
 
     /**
+     * Constructs an empty CircularArrayQueue with a default capacity.
+     */
+    public CircularArrayQueue() {
+        this(DEFAULT_CAPACITY);
+    }
+
+    /**
+     * Constructs an empty CircularArrayQueue with a specified initial capacity.
+     * 
+     * @param initialCapacity the initial capacity (Minimum value is 0)
+     */
+    @SuppressWarnings("unchecked")
+    public CircularArrayQueue(int initialCapacity) {
+        array = (T[]) new Object[(initialCapacity < 0) ? 0 : initialCapacity];
+        size = 0;
+        first = 0;
+        last = 0;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @throws NullPointerException if the element is null
