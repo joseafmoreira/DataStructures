@@ -100,7 +100,8 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
     public String toString() {
         StringBuilder result = new StringBuilder("[");
         for (int i = 0; i < size(); i++)
-            result.append(array[i]).append((i == size() - 1) ? "]" : ", ");
+            result.append(array[i]).append((i < size() - 1) ? ", " : "");
+        result.append("]");
         
         return result.toString();
     }

@@ -5,27 +5,29 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import dev.joseafmoreira.exception.EmptyCollectionException;
+import dev.joseafmoreira.node.LinearNode;
 import pt.ipp.estg.ed.ListADT;
 
 /**
- * Resizable-array implementation of the {@code ListADT} interface.
+ * Singly-linked list implementation of the {@code ListADT} interface.
  * 
- * <h3>ArrayList</h3>
+ * <h3>LinkedList</h3>
  * @param <T> the type of element stored in this list
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
  * @see ListADT
+ * @see LinearNode
  */
-public abstract class ArrayList<T> implements ListADT<T> {
+public class LinkedList<T> implements ListADT<T> {
     /**
-     * The default capacity of this list array
+     * The head node of this list.
      */
-    protected static final int DEFAULT_CAPACITY = 10;
+    protected LinearNode<T> head;
     /**
-     * The array containing the elements of this list
+     * The tail node of this list.
      */
-    protected T[] array;
+    protected LinearNode<T> tail;
     /**
      * The number of elements in this list
      */
@@ -36,20 +38,11 @@ public abstract class ArrayList<T> implements ListADT<T> {
     protected int modCount;
 
     /**
-     * Constructs an empty ArrayList with a default capacity.
+     * Constructs an empty LinkedList object.
      */
-    public ArrayList() {
-        this(DEFAULT_CAPACITY);
-    }
-
-    /**
-     * Constructs an empty ArrayList with a specified initial capacity.
-     * 
-     * @param initialCapacity the initial capacity (Minimum value is 0)
-     */
-    @SuppressWarnings("unchecked")
-    public ArrayList(int initialCapacity) {
-        array = (T[]) new Object[(initialCapacity < 0) ? 0 : initialCapacity];
+    public LinkedList() {
+        head = null;
+        tail = null;
         size = 0;
         modCount = 0;
     }
@@ -62,10 +55,8 @@ public abstract class ArrayList<T> implements ListADT<T> {
     @Override
     public T removeFirst() throws EmptyCollectionException {
         T result = first();
-        array[0] = null;
-        for (int i = 1; i < size() - 1; i++)
-            array[i - 1] = array[i];
-        array[--size] = null;
+        head = head.getNext();
+        size--;
         modCount++;
 
         return result;
@@ -79,8 +70,17 @@ public abstract class ArrayList<T> implements ListADT<T> {
     @Override
     public T removeLast() throws EmptyCollectionException {
         T result = last();
-        array[--size] = null;
-        modCount++;
+        if (size() == 1) 
+            removeFirst();
+        else {
+            LinearNode<T> currentNode = head;
+            while (currentNode.getNext() != tail)
+                currentNode = currentNode.getNext();
+            tail = currentNode;
+            tail.setNext(null);
+            size--;
+            modCount++;
+        }
 
         return result;
     }
@@ -98,19 +98,23 @@ public abstract class ArrayList<T> implements ListADT<T> {
 
         if (first().equals(target)) return removeFirst();
         if (last().equals(target)) return removeLast();
-        for (int i = 1; i < size() - 1; i++) {
-            if (array[i].equals(target)) {
-                array[i] = null;
-                for (int j = i; j < size() - 1; j++) {
-                    array[j] = array[j + 1];
-                }
-                array[--size] = null;
-                modCount++;
+        if (size() > 2) {
+            LinearNode<T> previousNode = head;
+            LinearNode<T> currentNode = head.getNext();
+            while (currentNode != tail) {
+                if (currentNode.getElement().equals(target)) {
+                    previousNode.setNext(currentNode.getNext());
+                    currentNode.setNext(null);
+                    size--;
+                    modCount++;
 
-                return target;
+                    return target;
+                }
+                previousNode = currentNode;
+                currentNode = currentNode.getNext();
             }
         }
-        
+
         throw new NoSuchElementException("Target not found");
     }
 
@@ -123,7 +127,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public T first() throws EmptyCollectionException {
         if (isEmpty()) throw new EmptyCollectionException("List is empty");
 
-        return array[0];
+        return head.getElement();
     }
 
     /**
@@ -135,7 +139,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public T last() throws EmptyCollectionException {
         if (isEmpty()) throw new EmptyCollectionException("List is empty");
 
-        return array[size() - 1];
+        return tail.getElement();
     }
 
     /**
@@ -147,12 +151,14 @@ public abstract class ArrayList<T> implements ListADT<T> {
     public boolean contains(T target) {
         if (target == null) throw new NullPointerException("Target is null");
 
-        for (int i = 0; i < size(); i++)
-            if (array[i].equals(target))
+        LinearNode<T> currentNode = head;
+        while (currentNode != null) {
+            if (currentNode.getElement().equals(target)) 
                 return true;
+            currentNode = currentNode.getNext();
+        }
         return false;
     }
-
     /**
      * {@inheritDoc}
      */
@@ -174,7 +180,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new ArrayListIterator();
+        return new LinkedListIterator();
     }
 
     /**
@@ -183,34 +189,24 @@ public abstract class ArrayList<T> implements ListADT<T> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
-        for (int i = 0; i < size(); i++)
-            result.append(array[i]).append((i < size() - 1) ? ", " : "");
+        LinearNode<T> currentNode = head;
+        while (currentNode != null) {
+            result.append(currentNode.getElement()).append((currentNode != tail) ? ", " : "");
+        }
         result.append("]");
 
         return result.toString();
     }
 
-    /**
-     * Expands the capacity of the array used to store the elements in this list. <p>
-     * If the current array length is 0 or 1, a new array with a capacity of the old length + 1 is created. <p>
-     * Otherwise, a new array with a capacity increased by half of the current array's length is created. <p>
-     * The elements from the current array are copied to the new array.
-     */
-    @SuppressWarnings("unchecked")
-    protected void expandCapacity() {
-        T[] newArray = (T[]) new Object[(array.length < 2) ? array.length + 1 : array.length + (array.length / 2)];
-        for (int i = 0; i < size(); i++) newArray[i] = array[i];
-        array = newArray;
-    }
-
-    /**
-     * {@code Iterator} implementation for the {@code ArrayList} class
-     */
-    private class ArrayListIterator implements Iterator<T> {
+    private class LinkedListIterator implements Iterator<T> {
         /**
-         * The current index of this list array
+         * The previous node of this linked list
          */
-        private int currentIndex;
+        private LinearNode<T> previousNode;
+        /**
+         * The current node of this linked list
+         */
+        private LinearNode<T> currentNode;
         /**
          * The expected number of modifications made to this list
          */
@@ -221,10 +217,10 @@ public abstract class ArrayList<T> implements ListADT<T> {
         private boolean okToRemove;
 
         /**
-         * Constructs an empty ArrayListIterator object.
+         * Constructs an empty LinkedListIterator object.
          */
-        public ArrayListIterator() {
-            currentIndex = 0;
+        public LinkedListIterator() {
+            currentNode = head;
             expectedModCount = modCount;
             okToRemove = false;
         }
@@ -234,7 +230,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
          */
         @Override
         public boolean hasNext() {
-            return currentIndex < size();
+            return currentNode != null;
         }
 
         /**
@@ -246,8 +242,12 @@ public abstract class ArrayList<T> implements ListADT<T> {
         public T next() throws ConcurrentModificationException {
             if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
 
+            T result = currentNode.getElement();
             okToRemove = true;
-            return array[currentIndex++];
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+
+            return result;
         }
 
         /**
@@ -260,7 +260,7 @@ public abstract class ArrayList<T> implements ListADT<T> {
             if (expectedModCount != modCount) throw new ConcurrentModificationException("List has been altered");
             if (!okToRemove) throw new IllegalStateException("Invalid remove call");
 
-            ArrayList.this.remove(array[--currentIndex]);
+            LinkedList.this.remove(previousNode.getElement());
             expectedModCount++;
             okToRemove = false;
         }
