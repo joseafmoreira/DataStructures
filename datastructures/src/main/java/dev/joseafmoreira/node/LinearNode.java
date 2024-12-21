@@ -1,28 +1,43 @@
 package dev.joseafmoreira.node;
 
 /**
- * A linear node is an auxiliary object used to implement a single linked abstract data type. 
- * It contains an {@link #element} and a pointer to the {@link #next} linear node. <p>
+ * A linear node is an auxiliary object used to implement a single linked
+ * abstract data type.
+ * It contains an {@link #element} and a pointer to the {@link #next} linear
+ * node.
+ * <p>
  * 
- * The available constructors are the following: <p>
+ * The available constructors are the following:
+ * <p>
  * <ul>
- *  <li>{@link #LinearNode()}: Constructs an empty linear node</li>
- *  <li>{@link #LinearNode(Object)}: Constructs a linear node with an element</li>
- *  <li>{@link #LinearNode(Object, LinearNode)}: Constructs a linear node with an element and a reference to the next linear node</li>
+ * <li>{@link #LinearNode()}: Constructs an empty linear node</li>
+ * <li>{@link #LinearNode(Object)}: Constructs a linear node with an
+ * element</li>
+ * <li>{@link #LinearNode(Object, LinearNode)}: Constructs a linear node with an
+ * element and a reference to the next linear node</li>
  * </ul>
  * 
- * The operations for this {@code LinearNode} include: <p>
+ * The operations for this {@code LinearNode} include:
+ * <p>
  * <ul>
- *  <li>{@link #getElement()}: Returns the element stored in this linear node</li>
- *  <li>{@link #setElement(Object)}: Sets the element stored in this linear node</li>
- *  <li>{@link #getNext()}: Returns the reference stored in this linear node next pointer</li>
- *  <li>{@link #setNext(LinearNode)}: Sets the reference stored in this linear node next pointer</li>
- *  <li>{@link #hashCode()}: Returns the hash code value for this linear node</li>
- *  <li>{@link #equals(Object)}: Compares this linear node with the specified object for equality</li>
- *  <li>{@link #toString()}: Returns a string representation of this linear node</li>
+ * <li>{@link #getElement()}: Returns the element stored in this linear
+ * node</li>
+ * <li>{@link #setElement(Object)}: Sets the element stored in this linear
+ * node</li>
+ * <li>{@link #getNext()}: Returns the reference stored in this linear node next
+ * pointer</li>
+ * <li>{@link #setNext(LinearNode)}: Sets the reference stored in this linear
+ * node next pointer</li>
+ * <li>{@link #hashCode()}: Returns the hash code value for this linear
+ * node</li>
+ * <li>{@link #equals(Object)}: Compares this linear node with the specified
+ * object for equality</li>
+ * <li>{@link #toString()}: Returns a string representation of this linear
+ * node</li>
  * </ul>
  * 
  * <h3>LinearNode</h3>
+ * 
  * @param <T> the type of element stored in this linear node
  * @since 1.0
  * @version 1.0
@@ -30,7 +45,8 @@ package dev.joseafmoreira.node;
  */
 public class LinearNode<T> {
     /**
-     * The prime number used to create an hash code for this linear node and all it's subclasses
+     * The prime number used to create an hash code for this linear node and all
+     * it's subclasses
      */
     protected static final int prime = 31;
     /**
@@ -46,7 +62,7 @@ public class LinearNode<T> {
      * Constructs an empty linear node.
      */
     public LinearNode() {
-        this(null, null);
+        this(null);
     }
 
     /**
@@ -59,10 +75,11 @@ public class LinearNode<T> {
     }
 
     /**
-     * Constrcuts a linear node with an element and a reference to the next linear node.
+     * Constrcuts a linear node with an element and a reference to the next linear
+     * node.
      * 
      * @param element the element to be stored in this linear node
-     * @param next the reference of the next linear node
+     * @param next    the reference of the next linear node
      */
     public LinearNode(T element, LinearNode<T> next) {
         setElement(element);
@@ -107,7 +124,8 @@ public class LinearNode<T> {
 
     /**
      * Returns the hash code value for this linear node.
-     * The hash code is calculated based on the element and next linear node of this linear node.
+     * The hash code is calculated based on the element and next linear node of this
+     * linear node.
      * 
      * @return the hash code value for this linear node
      */
@@ -124,18 +142,23 @@ public class LinearNode<T> {
      * Compares this linear node with the specified object for equality.
      * 
      * @param obj the object to compare with
-     * @return true if the specified object is equal to this linear node, false otherwise
+     * @return true if the specified object is equal to this linear node, false
+     *         otherwise
      */
     @SuppressWarnings("unchecked")
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
 
         LinearNode<T> other = (LinearNode<T>) obj;
-        if (element == null && other.element != null || element != null && !element.equals(other.element)) return false;
-        if (next == null && other.next != null || next != null && !next.equals(other.next)) return false;
-        
+        if (element == null && other.element != null || element != null && !element.equals(other.element))
+            return false;
+        if (next == null && other.next != null || next != null && !next.equals(other.next))
+            return false;
+
         return true;
     }
 
