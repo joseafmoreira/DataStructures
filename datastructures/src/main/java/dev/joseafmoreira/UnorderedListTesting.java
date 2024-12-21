@@ -5,7 +5,7 @@ import dev.joseafmoreira.abstractdatatype.list.unordered.UnorderedDoubleLinkedLi
 import dev.joseafmoreira.abstractdatatype.list.unordered.UnorderedLinkedList;
 import pt.ipp.estg.ed.UnorderedListADT;
 
-public class UnorderedListTesting {
+public abstract class UnorderedListTesting {
     private static final String CLASS = "DLINKED";
     private static final int CAPACITY = 0;
 

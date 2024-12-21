@@ -5,7 +5,7 @@ import dev.joseafmoreira.abstractdatatype.queue.CircularArrayQueue;
 import dev.joseafmoreira.abstractdatatype.queue.LinkedQueue;
 import pt.ipp.estg.ed.QueueADT;
 
-public class QueueTesting {
+public abstract class QueueTesting {
     private static final String CLASS = "CIRCULAR";
     private static final int CAPACITY = 0;
 

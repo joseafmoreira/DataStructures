@@ -4,7 +4,7 @@ import dev.joseafmoreira.abstractdatatype.stack.ArrayStack;
 import dev.joseafmoreira.abstractdatatype.stack.LinkedStack;
 import pt.ipp.estg.ed.StackADT;
 
-public class StackTesting {
+public abstract class StackTesting {
     private static final String CLASS = "ARRAY";
     private static final int CAPACITY = 0;
 

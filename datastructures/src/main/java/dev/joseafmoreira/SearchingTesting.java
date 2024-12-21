@@ -3,9 +3,11 @@ package dev.joseafmoreira;
 import dev.joseafmoreira.abstractdatatype.list.ordered.OrderedArrayList;
 import dev.joseafmoreira.abstractdatatype.list.ordered.OrderedDoubleLinkedList;
 import dev.joseafmoreira.abstractdatatype.list.ordered.OrderedLinkedList;
+import dev.joseafmoreira.algorithm.searching.BinarySearch;
+import dev.joseafmoreira.algorithm.searching.LinearSearch;
 import pt.ipp.estg.ed.OrderedListADT;
 
-public abstract class OrderedListTesting {
+public class SearchingTesting {
     private static final String CLASS = "DLINKED";
     private static final int CAPACITY = 0;
 
@@ -19,9 +21,7 @@ public abstract class OrderedListTesting {
         orderedList.add(4);
         System.out.println(orderedList);
 
-        System.out.println("Removed element: " + orderedList.removeFirst());
-        System.out.println("Removed element: " + orderedList.removeLast());
-        System.out.println("Removed element: " + orderedList.remove(3));
-        System.out.println(orderedList);
+        System.out.println(LinearSearch.linearSearch(orderedList, 3));
+        System.out.println(BinarySearch.binarySearch(orderedList, 3));
     }
 }
