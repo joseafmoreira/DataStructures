@@ -51,16 +51,6 @@ public interface BinaryTreeADT<T> extends IterableCollectionADT<T> {
     T getRoot();
 
     /**
-     * Returns a specified element if it is found in this binary tree.
-     * 
-     * @param target the target to search
-     * @return true if the element is found in this binary tree, false otherwise
-     * @throws NullPointerException if the specified target is null and
-     *         this list does not allow null elements
-     */
-    boolean find(T target);
-
-    /**
      * Returns an iterator over the elements in this binary tree 
      * by performing a pre-order traversal.
      * 
@@ -91,4 +81,11 @@ public interface BinaryTreeADT<T> extends IterableCollectionADT<T> {
      * @return an iterator over the elements in this binary tree
      */
     Iterator<T> iteratorLevelOrder();
+
+    /**
+     * {@inheritDoc}
+     */
+    default Iterator<T> iterator() {
+        return iteratorLevelOrder();
+    }
 }
