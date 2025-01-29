@@ -1,7 +1,6 @@
 package dev.joseafmoreira.collection.list.unordered;
 
 import dev.joseafmoreira.algorithm.search.LinearSearch;
-import dev.joseafmoreira.algorithm.sort.MergeSort;
 import dev.joseafmoreira.collection.list.ArrayList;
 import pt.ipp.estg.ed.abstractdatatype.UnorderedListADT;
 
