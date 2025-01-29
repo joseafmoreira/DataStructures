@@ -3,32 +3,46 @@ package pt.ipp.estg.ed.abstractdatatype;
 import java.util.Iterator;
 
 /**
- * A graph is a non-linear abstract data type that consists of vertexes and edges or connections between those vertexes. <p>
- * There will be two base types of graphs implemented: <p>
+ * A graph is a non-linear abstract data type that consists of vertexes and
+ * edges or connections between those vertexes.
+ * <p>
+ * There will be two base types of graphs implemented:
+ * <p>
  * <ul>
- *  <li>Undirected</li>
- *  <li>Directed</li>
+ * <li>Undirected</li>
+ * <li>Directed</li>
  * </ul>
- * The difference between undirected and directed graphs is that if an edge is added between two vertexes 
- * it will be bidirectional and unidirectional, respectively. <p>
- * For this graph implementation, the edges don't have weights associated to them. <p>
+ * The difference between undirected and directed graphs is that if an edge is
+ * added between two vertexes
+ * it will be bidirectional and unidirectional, respectively.
+ * <p>
+ * For this graph implementation, the edges don't have weights associated to
+ * them.
+ * <p>
  * 
- * The common operations for a graph include: <p>
+ * The common operations for a graph include:
+ * <p>
  * <ul>
- *  <li>{@link #addVertex(Object)}: Adds a vertex to this graph</li>
- *  <li>{@link #removeVertex(Object)}: Removes a vertex from this graph</li>
- *  <li>{@link #addEdge(Object, Object)}: Adds an edge between two vertexes</li>
- *  <li>{@link #removeEdge(Object, Object)}: Removes an edge between two vertexes</li>
- *  <li>{@link #isConnected()}: Checks if this graph is connected</li>
- *  <li>{@link #iteratorBFS(Object)}: Returns an iterator over the elements in this graph by performing a breadth-first-search traversal</li>
- *  <li>{@link #iteratorDFS(Object)}: Returns an iterator over the elements in this graph by performing a depth-first-search traversal</li>
- *  <li>{@link #iteratorShortestPath(Object, Object)}: Returns an iterator over the elements that constitute the shortest path between two vertexes including those two vertexes</li>
+ * <li>{@link #addVertex(Object)}: Adds a vertex to this graph</li>
+ * <li>{@link #removeVertex(Object)}: Removes a vertex from this graph</li>
+ * <li>{@link #addEdge(Object, Object)}: Adds an edge between two vertexes</li>
+ * <li>{@link #removeEdge(Object, Object)}: Removes an edge between two
+ * vertexes</li>
+ * <li>{@link #isConnected()}: Checks if this graph is connected</li>
+ * <li>{@link #iteratorBFS(Object)}: Returns an iterator over the elements in
+ * this graph by performing a breadth-first-search traversal</li>
+ * <li>{@link #iteratorDFS(Object)}: Returns an iterator over the elements in
+ * this graph by performing a depth-first-search traversal</li>
+ * <li>{@link #iteratorShortestPath(Object, Object)}: Returns an iterator over
+ * the elements that constitute the shortest path between two vertexes including
+ * those two vertexes</li>
  * </ul>
  * 
- * This interface is a member of the 
+ * This interface is a member of the
  * <i>Data Structures Framework</i>
  * 
  * <h3>GraphADT</h3>
+ * 
  * @param <T> the type of elements in this graph
  * @since 1.0
  * @version 1.0
@@ -74,7 +88,8 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
     boolean isConnected();
 
     /**
-     * Returns an iterator over the elements in this graph by performing a breadth-first-search traversal.
+     * Returns an iterator over the elements in this graph by performing a
+     * breadth-first-search traversal.
      * 
      * @param startVertex the start vertex
      * @return an iterator over the elements in this graph
@@ -82,7 +97,8 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
     Iterator<T> iteratorBFS(T startVertex);
 
     /**
-     * Returns an iterator over the elements in this graph by performing a depth-first-search traversal.
+     * Returns an iterator over the elements in this graph by performing a
+     * depth-first-search traversal.
      * 
      * @param startVertex the start vertex
      * @return an iterator over the elements in this graph
@@ -90,13 +106,13 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
     Iterator<T> iteratorDFS(T startVertex);
 
     /**
-     * Returns an iterator over the elements that constitute the shortest path 
+     * Returns an iterator over the elements that constitute the shortest path
      * between two vertexes including those two vertexes
      * 
-     * @param startVertex the start vertex
+     * @param startVertex  the start vertex
      * @param targetVertex the target vertex
-     * @return an iterator over the elements that constitute the shortest path 
-     * between two vertexes including those two vertexes
+     * @return an iterator over the elements that constitute the shortest path
+     *         between two vertexes including those two vertexes
      */
     Iterator<T> iteratorShortestPath(T startVertex, T targetVertex);
 }

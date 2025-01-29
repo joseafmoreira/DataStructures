@@ -6,11 +6,13 @@ import java.util.StringJoiner;
 import pt.ipp.estg.ed.abstractdatatype.IterableCollectionADT;
 
 /**
- * This class provides a skeletal implementation of the 
- * {@code IterableCollectionADT} interface, to minimize the effort 
- * required to implement this interface. <p>
+ * This class provides a skeletal implementation of the
+ * {@code IterableCollectionADT} interface, to minimize the effort
+ * required to implement this interface.
+ * <p>
  * 
  * <h3>AbstractIterableCollection</h3>
+ * 
  * @param <T> the type of elements in this collection
  * @since 1.0
  * @version 1.0
@@ -29,9 +31,10 @@ public abstract class AbstractIterableCollection<T> extends AbstractCollection<T
             return true;
         if (obj == null || getClass() != obj.getClass())
             return false;
-        
+
         AbstractIterableCollection<T> collection = (AbstractIterableCollection<T>) obj;
-        if (size() != collection.size()) return false;
+        if (size() != collection.size())
+            return false;
         Iterator<T> it1 = iterator();
         Iterator<T> it2 = collection.iterator();
         while (it1.hasNext())

@@ -1,16 +1,21 @@
 package pt.ipp.estg.ed.exception;
 
 /**
- * Unchecked exception that can be thrown by some methods 
- * of a collection indicating that it is empty. <p>
+ * Unchecked exception that can be thrown by some methods
+ * of a collection indicating that it is empty.
+ * <p>
  * 
- * The available constructors are the following: <p>
+ * The available constructors are the following:
+ * <p>
  * <ul>
- *  <li>{@link #EmptyCollectionException()}: Constructs a new EmptyCollectionException with a default message</li>
- *  <li>{@link #EmptyCollectionException(String)}: Constructs a new EmptyCollectionException with a custom message</li>
+ * <li>{@link #EmptyCollectionException()}: Constructs a new
+ * EmptyCollectionException with a default message</li>
+ * <li>{@link #EmptyCollectionException(String)}: Constructs a new
+ * EmptyCollectionException with a custom message</li>
  * </ul>
  * 
  * <h3>EmptyCollectionException</h3>
+ * 
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira

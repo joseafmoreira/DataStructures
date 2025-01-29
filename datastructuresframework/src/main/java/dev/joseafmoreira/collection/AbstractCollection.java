@@ -4,9 +4,11 @@ import pt.ipp.estg.ed.abstractdatatype.CollectionADT;
 
 /**
  * This class provides a skeletal implementation of the {@code CollectionADT}
- * interface, to minimize the effort required to implement this interface. <p>
+ * interface, to minimize the effort required to implement this interface.
+ * <p>
  * 
  * <h3>AbstractCollection</h3>
+ * 
  * @param <T> the type of elements in this collection
  * @since 1.0
  * @version 1.0
