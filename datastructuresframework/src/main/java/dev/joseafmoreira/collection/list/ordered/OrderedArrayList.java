@@ -1,7 +1,6 @@
 package dev.joseafmoreira.collection.list.ordered;
 
 import dev.joseafmoreira.algorithm.search.BinarySearch;
-import dev.joseafmoreira.algorithm.sort.MergeSort;
 import dev.joseafmoreira.collection.list.ArrayList;
 import pt.ipp.estg.ed.abstractdatatype.OrderedListADT;
 import pt.ipp.estg.ed.exception.EmptyCollectionException;
