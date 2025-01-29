@@ -3,6 +3,7 @@ package dev.joseafmoreira.collection.list;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
+import dev.joseafmoreira.algorithm.sort.MergeSort;
 import dev.joseafmoreira.collection.AbstractIterableCollection;
 import pt.ipp.estg.ed.abstractdatatype.ListADT;
 import pt.ipp.estg.ed.exception.EmptyCollectionException;
@@ -100,6 +101,26 @@ public abstract class ArrayList<T> extends AbstractIterableCollection<T> impleme
         array[--size] = null;
         modCount++;
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    public void clear() {
+        super.clear();
+        array = (T[]) new Object[DEFAULT_CAPACITY];
+        modCount++;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws ClassCastException {@inheritDoc}
+     */
+    @Override
+    public void sort() {
+        MergeSort.sort(array, size());
     }
 
     /**

@@ -44,18 +44,32 @@ public abstract class LinearSearch {
      * Performs a linear search on the specified array to find the specified target.
      *
      * @param <T>    the type of elements in the array
-     * @param array   the specified array
+     * @param array  the specified array
      * @param target the specified target
      * @return true if the target element is found in the array, false otherwise
      * @throws NullPointerException if the array or target is null
      */
     public static <T> boolean search(T[] array, T target) {
+        return search(array, array.length, target);
+    }
+
+    /**
+     * Performs a linear search on the specified array to find the specified target.
+     *
+     * @param <T>    the type of elements in the array
+     * @param array  the specified array
+     * @param length the specified length
+     * @param target the specified target
+     * @return true if the target element is found in the array, false otherwise
+     * @throws NullPointerException if the array or target is null
+     */
+    public static <T> boolean search(T[] array, int length, T target) {
         if (array == null)
             throw new NullPointerException("Array is null");
         if (target == null)
             throw new NullPointerException("Target is null");
-        for (T element : array)
-            if (element.equals(target))
+        for (int i = 0; i < length; i++)
+            if (array[i].equals(target))
                 return true;
         return false;
     }

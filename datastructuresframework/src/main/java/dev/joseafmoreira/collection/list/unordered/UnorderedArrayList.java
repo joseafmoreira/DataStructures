@@ -1,6 +1,7 @@
 package dev.joseafmoreira.collection.list.unordered;
 
 import dev.joseafmoreira.algorithm.search.LinearSearch;
+import dev.joseafmoreira.algorithm.sort.MergeSort;
 import dev.joseafmoreira.collection.list.ArrayList;
 import pt.ipp.estg.ed.abstractdatatype.UnorderedListADT;
 
@@ -62,6 +63,6 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      */
     @Override
     public boolean contains(T target) {
-        return LinearSearch.search(array, target);
+        return LinearSearch.search(array, size(), target);
     }
 }

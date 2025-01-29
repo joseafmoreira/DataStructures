@@ -1,14 +1,16 @@
 package dev.joseafmoreira.collection.list.ordered;
 
 import dev.joseafmoreira.algorithm.search.BinarySearch;
+import dev.joseafmoreira.algorithm.sort.MergeSort;
 import dev.joseafmoreira.collection.list.ArrayList;
 import pt.ipp.estg.ed.abstractdatatype.OrderedListADT;
+import pt.ipp.estg.ed.exception.EmptyCollectionException;
 
 /**
  * Resizable-array implementation of the {@code OrderedListADT} interface
  * using the {@code ArrayList} abstract class as a base code.
  * 
- * <h3>UnorderedArrayList</h3>
+ * <h3>OrderedArrayList</h3>
  * 
  * @param <T> the type of element stored in this list
  * @since 1.0
@@ -65,10 +67,23 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
     /**
      * {@inheritDoc}
      * 
+     * @throws EmptyCollectionException {@inheritDoc}
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      * @throws NullPointerException {@inheritDoc}
+     */
+    public void set(int index, T element) {
+        super.set(index, element);
+        sort();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws NullPointerException {@inheritDoc}
+     * @throws ClassCastException if the elements in this list aren't comparable
      */
     @Override
     public boolean contains(T target) {
-        return BinarySearch.search(this, target);
+        return BinarySearch.search(array, size(), target);
     }
 }

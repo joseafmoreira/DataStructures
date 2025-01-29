@@ -177,4 +177,12 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
      *                                   ({@code index < 0 || index >= size()})
      */
     T remove(int index);
+
+    /**
+     * Sorts the elements in the list according to their natural ordering.
+     * The list must contain elements that implement the Comparable interface.
+     * 
+     * @throws ClassCastException if the elements in this list aren't comparable
+     */
+    void sort();
 }

@@ -16,5 +16,13 @@ public class OrderedListTesting {
         System.out.println("Removed element: " + orderedList.removeLast());
         System.out.println("Removed element: " + orderedList.remove((Integer) 3));
         System.out.println(orderedList);
+        int element = 1;
+        int index = orderedList.size() - 1;
+        System.out.println("Contains element " + element + ": " + orderedList.contains(element));
+        orderedList.set(index, element);
+        System.out.println(orderedList);
+        System.out.println("Contains element " + element + ": " + orderedList.contains(element));
+        orderedList.clear();
+        System.out.println(orderedList);
     }
 }

@@ -52,7 +52,7 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * @throws NullPointerException if the specified element is null and
      *                              this list does not allow null elements
      */
-    default void addToFront(T element) {
+    default void addFirst(T element) {
         add(0, element);
     }
 
@@ -63,7 +63,7 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * @throws NullPointerException if the specified element is null and
      *                              this list does not allow null elements
      */
-    default void addToRear(T element) {
+    default void addLast(T element) {
         add(size(), element);
     }
 
