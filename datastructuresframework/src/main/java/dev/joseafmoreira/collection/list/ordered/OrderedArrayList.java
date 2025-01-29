@@ -1,5 +1,6 @@
 package dev.joseafmoreira.collection.list.ordered;
 
+import dev.joseafmoreira.algorithm.search.BinarySearch;
 import dev.joseafmoreira.collection.list.ArrayList;
 import pt.ipp.estg.ed.abstractdatatype.OrderedListADT;
 
@@ -59,5 +60,15 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
         array[addingIndex] = element;
         size++;
         modCount++;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws NullPointerException {@inheritDoc}
+     */
+    @Override
+    public boolean contains(T target) {
+        return BinarySearch.search(this, target);
     }
 }

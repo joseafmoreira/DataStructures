@@ -3,6 +3,7 @@ package dev.joseafmoreira.collection.list;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
+import dev.joseafmoreira.collection.AbstractIterableCollection;
 import pt.ipp.estg.ed.abstractdatatype.ListADT;
 import pt.ipp.estg.ed.exception.EmptyCollectionException;
 
@@ -17,7 +18,7 @@ import pt.ipp.estg.ed.exception.EmptyCollectionException;
  * @author joseafmoreira
  * @see ListADT
  */
-public class ArrayList<T> extends AbstractList<T> {
+public abstract class ArrayList<T> extends AbstractIterableCollection<T> implements ListADT<T> {
     /**
      * The default capacity of this list array
      */
@@ -34,7 +35,7 @@ public class ArrayList<T> extends AbstractList<T> {
     /**
      * Constructs an empty ArrayList with a default capacity.
      */
-    public ArrayList() {
+    protected ArrayList() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -44,7 +45,7 @@ public class ArrayList<T> extends AbstractList<T> {
      * @param initialCapacity the initial capacity (Minimum value is 0)
      */
     @SuppressWarnings("unchecked")
-    public ArrayList(int initialCapacity) {
+    protected ArrayList(int initialCapacity) {
         super();
         array = (T[]) new Object[(initialCapacity < 0) ? 0 : initialCapacity];
         modCount = 0;
