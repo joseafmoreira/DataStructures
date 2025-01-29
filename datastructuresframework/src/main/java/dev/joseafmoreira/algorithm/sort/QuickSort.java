@@ -100,7 +100,7 @@ public abstract class QuickSort {
         while (leftIndex <= rightIndex) {
             while (((Comparable<T>) array[leftIndex]).compareTo(partitionElement) < 0)
                 leftIndex++;
-            while (((Comparable<T>) array[rightIndex]).compareTo(partitionElement) > 0)
+            while (rightIndex >= minIndex && ((Comparable<T>) array[rightIndex]).compareTo(partitionElement) > 0)
                 rightIndex--;
             if (leftIndex <= rightIndex) {
                 SortingFunctions.swap(array, leftIndex, rightIndex);

@@ -60,7 +60,7 @@ public abstract class InsertionSort {
             throw new NullPointerException("Array is null");
         T key;
         int j;
-        for (int i = 1; i < array.length; i++) {
+        for (int i = 1; i < length; i++) {
             key = array[i];
             j = i;
             while (j > 0 && ((Comparable<T>) array[j - 1]).compareTo(key) > 0) {

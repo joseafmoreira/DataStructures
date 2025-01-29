@@ -55,18 +55,16 @@ public abstract class SelectionSort {
      * @throws ClassCastException   if the elements in the array aren't comparable
      */
     @SuppressWarnings("unchecked")
-    public static <T> T[] sort(T[] array, int length) {
+    public static <T> void sort(T[] array, int length) {
         if (array == null)
             throw new NullPointerException("Array is null");
         int minIndex;
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int i = 0; i < length - 1; i++) {
             minIndex = i;
-            for (int j = i + 1; j < array.length; j++)
+            for (int j = i + 1; j < length; j++)
                 if (((Comparable<T>) array[j]).compareTo(array[minIndex]) < 0)
                     minIndex = j;
             SortingFunctions.swap(array, minIndex, i);
         }
-
-        return array;
     }
 }

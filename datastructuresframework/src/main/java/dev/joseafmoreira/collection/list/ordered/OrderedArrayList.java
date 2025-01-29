@@ -40,7 +40,7 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
      * {@inheritDoc}
      * 
      * @throws NullPointerException {@inheritDoc}
-     * @throws ClassCastException {@inheritDoc}
+     * @throws ClassCastException   {@inheritDoc}
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -67,9 +67,9 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
     /**
      * {@inheritDoc}
      * 
-     * @throws EmptyCollectionException {@inheritDoc}
+     * @throws EmptyCollectionException  {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
+     * @throws NullPointerException      {@inheritDoc}
      */
     public void set(int index, T element) {
         super.set(index, element);
@@ -80,7 +80,7 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
      * {@inheritDoc}
      * 
      * @throws NullPointerException {@inheritDoc}
-     * @throws ClassCastException if the elements in this list aren't comparable
+     * @throws ClassCastException   if the elements in this list aren't comparable
      */
     @Override
     public boolean contains(T target) {
