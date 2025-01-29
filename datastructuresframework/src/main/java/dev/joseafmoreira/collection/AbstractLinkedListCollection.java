@@ -14,6 +14,7 @@ import dev.joseafmoreira.node.LinearNode;
  * @version 1.0
  * @author joseafmoreira
  * @see AbstractCollection
+ * @see LinearNode
  */
 public abstract class AbstractLinkedListCollection<T> extends AbstractCollection<T> {
     /**
@@ -26,6 +27,14 @@ public abstract class AbstractLinkedListCollection<T> extends AbstractCollection
      */
     protected AbstractLinkedListCollection() {
         super();
+        head = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void clear() {
+        super.clear();
         head = null;
     }
 

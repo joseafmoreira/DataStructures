@@ -62,6 +62,7 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
      * 
      * @param index the specified index
      * @return the element at the specified index in this list
+     * @throws EmptyCollectionException if this list is empty
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   ({@code index < 0 || index >= size()})
      */
@@ -97,6 +98,7 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
      * 
      * @param index   the specified index of the element to replace
      * @param element the specified element
+     * @throws EmptyCollectionException if this list is empty
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   ({@code index < 0 || index >= size()})
      * @throws NullPointerException      if the specified element is null and
@@ -151,6 +153,7 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
      * 
      * @param target the target to remove
      * @return true if this list contained the specified target, false otherwise
+     * @throws EmptyCollectionException if this list is empty
      * @throws NullPointerException if the specified target is null and
      *                              this list does not allow null elements
      */
@@ -169,6 +172,7 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
      * 
      * @param index the specified index
      * @return the removed element
+     * @throws EmptyCollectionException if this list is empty
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   ({@code index < 0 || index >= size()})
      */

@@ -29,11 +29,14 @@ package pt.ipp.estg.ed.abstractdatatype;
  * @see Comparable
  * @see ListADT
  */
-public interface OrderedListADT<T extends Comparable<T>> extends ListADT<T> {
+public interface OrderedListADT<T> extends ListADT<T> {
     /**
      * Adds an element to this ordered list at the proper location.
      * 
      * @param element the element to be added
+     * @throws NullPointerException if the specified element is null and
+     *                              this list does not allow null elements
+     * @throws ClassCastException   if the element isn't comparable
      */
     void add(T element);
 }
