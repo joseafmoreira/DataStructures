@@ -30,7 +30,6 @@ public class LinkedStack<T> extends AbstractLinkedListCollection<T> implements S
      * 
      * @throws NullPointerException {@inheritDoc}
      */
-    @Override
     public void push(T element) {
         if (element == null)
             throw new NullPointerException("Element is null");
@@ -44,7 +43,6 @@ public class LinkedStack<T> extends AbstractLinkedListCollection<T> implements S
      * 
      * @throws EmptyCollectionException {@inheritDoc}
      */
-    @Override
     public T pop() {
         T result = peek();
         head = head.getNext();
@@ -58,7 +56,6 @@ public class LinkedStack<T> extends AbstractLinkedListCollection<T> implements S
      * 
      * @throws EmptyCollectionException {@inheritDoc}
      */
-    @Override
     public T peek() {
         if (isEmpty())
             throw new EmptyCollectionException("Stack is empty");

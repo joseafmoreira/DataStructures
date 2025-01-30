@@ -3,7 +3,7 @@ package dev.joseafmoreira;
 import dev.joseafmoreira.collection.list.unordered.UnorderedArrayList;
 import pt.ipp.estg.ed.abstractdatatype.UnorderedListADT;
 
-public class UnorderedListTesting {
+public abstract class UnorderedListTesting {
     public static void main(String[] args) {
         UnorderedListADT<Integer> unorderedList = new UnorderedArrayList<>();
         unorderedList.addLast(3);

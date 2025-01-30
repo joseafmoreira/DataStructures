@@ -3,7 +3,7 @@ package dev.joseafmoreira;
 import dev.joseafmoreira.collection.list.ordered.OrderedArrayList;
 import pt.ipp.estg.ed.abstractdatatype.OrderedListADT;
 
-public class OrderedListTesting {
+public abstract class OrderedListTesting {
     public static void main(String[] args) {
         OrderedListADT<Integer> orderedList = new OrderedArrayList<>();
         orderedList.add(1);

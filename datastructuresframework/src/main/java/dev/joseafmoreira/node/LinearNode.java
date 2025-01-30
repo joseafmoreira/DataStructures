@@ -3,7 +3,7 @@ package dev.joseafmoreira.node;
 /**
  * A linear node is an auxiliary object used to implement a single linked
  * abstract data type.
- * It contains an {@link #element} and a pointer to the {@link #next} linear
+ * It contains an {@code #element} and a pointer to the {@code #next} linear
  * node.
  * <p>
  * 
@@ -20,20 +20,10 @@ package dev.joseafmoreira.node;
  * The operations for this {@code LinearNode} include:
  * <p>
  * <ul>
- * <li>{@link #getElement()}: Returns the element stored in this linear
- * node</li>
- * <li>{@link #setElement(Object)}: Sets the element stored in this linear
- * node</li>
  * <li>{@link #getNext()}: Returns the reference stored in this linear node next
  * pointer</li>
  * <li>{@link #setNext(LinearNode)}: Sets the reference stored in this linear
  * node next pointer</li>
- * <li>{@link #hashCode()}: Returns the hash code value for this linear
- * node</li>
- * <li>{@link #equals(Object)}: Compares this linear node with the specified
- * object for equality</li>
- * <li>{@link #toString()}: Returns a string representation of this linear
- * node</li>
  * </ul>
  * 
  * <h3>LinearNode</h3>
@@ -42,17 +32,9 @@ package dev.joseafmoreira.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see Node
  */
-public class LinearNode<T> {
-    /**
-     * The prime number used to create an hash code for this linear node and all
-     * it's subclasses
-     */
-    protected static final int PRIME_NUMBER = 31;
-    /**
-     * The element stored in this linear node
-     */
-    protected T element;
+public class LinearNode<T> extends Node<T> {
     /**
      * The pointer to the next linear node
      */
@@ -82,26 +64,8 @@ public class LinearNode<T> {
      * @param next    the reference of the next linear node
      */
     public LinearNode(T element, LinearNode<T> next) {
-        setElement(element);
+        super(element);
         setNext(next);
-    }
-
-    /**
-     * Returns the element stored in this linear node.
-     * 
-     * @return the element stored in this linear node
-     */
-    public T getElement() {
-        return element;
-    }
-
-    /**
-     * Sets the element stored in this linear node.
-     * 
-     * @param element the element to be stored in this linear node
-     */
-    public void setElement(T element) {
-        this.element = element;
     }
 
     /**
@@ -120,55 +84,5 @@ public class LinearNode<T> {
      */
     public void setNext(LinearNode<T> next) {
         this.next = next;
-    }
-
-    /**
-     * Compares this linear node with the specified object for equality.
-     * 
-     * @param obj the object to compare with
-     * @return true if the specified object is equal to this linear node, false
-     *         otherwise
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-
-        LinearNode<T> other = (LinearNode<T>) obj;
-        if (element == null && other.element != null || element != null && !element.equals(other.element))
-            return false;
-        if (next == null && other.next != null || next != null && !next.equals(other.next))
-            return false;
-
-        return true;
-    }
-
-    /**
-     * Returns the hash code value for this linear node.
-     * The hash code is calculated based on the element and next linear node of this
-     * linear node.
-     * 
-     * @return the hash code value for this linear node
-     */
-    @Override
-    public int hashCode() {
-        int result = 1;
-        result = PRIME_NUMBER * result + ((element == null) ? 0 : element.hashCode());
-        result = PRIME_NUMBER * result + ((next == null) ? 0 : next.hashCode());
-
-        return result;
-    }
-
-    /**
-     * Returns a string representation of this linear node.
-     * 
-     * @return a string representation of this linear node
-     */
-    @Override
-    public String toString() {
-        return element.toString();
     }
 }

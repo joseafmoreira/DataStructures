@@ -3,7 +3,7 @@ package dev.joseafmoreira;
 import dev.joseafmoreira.collection.queue.LinkedQueue;
 import pt.ipp.estg.ed.abstractdatatype.QueueADT;
 
-public class QueueTesting {
+public abstract class QueueTesting {
     public static void main(String[] args) {
         QueueADT<Integer> queue = new LinkedQueue<>();
         queue.enqueue(1);

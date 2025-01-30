@@ -36,7 +36,6 @@ public class LinkedQueue<T> extends AbstractLinkedListCollection<T> implements Q
      * 
      * @throws NullPointerException {@inheritDoc}
      */
-    @Override
     public void enqueue(T element) {
         if (element == null)
             throw new NullPointerException("Element is null");
@@ -55,7 +54,6 @@ public class LinkedQueue<T> extends AbstractLinkedListCollection<T> implements Q
      * 
      * @throws EmptyCollectionException {@inheritDoc}
      */
-    @Override
     public T dequeue() {
         T result = first();
         head = head.getNext();
@@ -71,7 +69,6 @@ public class LinkedQueue<T> extends AbstractLinkedListCollection<T> implements Q
      * 
      * @throws EmptyCollectionException {@inheritDoc}
      */
-    @Override
     public T first() {
         if (isEmpty())
             throw new EmptyCollectionException("Queue is empty");

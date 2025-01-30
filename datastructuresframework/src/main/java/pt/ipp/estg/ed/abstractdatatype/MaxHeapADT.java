@@ -1,5 +1,7 @@
 package pt.ipp.estg.ed.abstractdatatype;
 
+import pt.ipp.estg.ed.exception.EmptyCollectionException;
+
 /**
  * A max-heap is a type of heap in which every parent node is bigger or equal
  * in comparison to it's left and right child.
@@ -30,6 +32,7 @@ public interface MaxHeapADT<T> extends HeapADT<T> {
      * Removes the element from the root of this max-heap.
      * 
      * @return the element from the root of this max-heap
+     * @throws EmptyCollectionException if this max-heap is empty
      */
     T removeMax();
 
@@ -37,6 +40,7 @@ public interface MaxHeapADT<T> extends HeapADT<T> {
      * Returns the element from the root of this max-heap.
      * 
      * @return the element from the root of this max-heap
+     * @throws EmptyCollectionException if this max-heap is empty
      */
     T findMax();
 }

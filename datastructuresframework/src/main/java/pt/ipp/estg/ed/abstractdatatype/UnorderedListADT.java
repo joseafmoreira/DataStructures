@@ -1,5 +1,7 @@
 package pt.ipp.estg.ed.abstractdatatype;
 
+import java.util.NoSuchElementException;
+
 /**
  * An unordered list is a linear abstract data type that allows the addition in
  * which
@@ -60,8 +62,8 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * Adds an element to the rear of this unordered list.
      * 
      * @param element the element to be added to the rear of this unordered list
-     * @throws NullPointerException if the specified element is null and
-     *                              this list does not allow null elements
+     * @throws NoSuchElementException if the specified element is null and
+     *                                this list does not allow null elements
      */
     default void addLast(T element) {
         add(size(), element);
@@ -72,11 +74,11 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * 
      * @param element the element to be added after the target
      * @param target  the target to search
-     * @throws NullPointerException     if the specified element or target is
-     *                                  null and this list does not allow null
-     *                                  elements
-     * @throws IllegalArgumentException if the specified target is not
-     *                                  found in this list
+     * @throws NullPointerException   if the specified element or target is
+     *                                null and this list does not allow null
+     *                                elements
+     * @throws NoSuchElementException if the specified target is not
+     *                                found in this list
      */
     default void addBefore(T element, T target) {
         int index = indexOf(target);
@@ -90,11 +92,11 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * 
      * @param element the element to be added after the target
      * @param target  the target to search
-     * @throws NullPointerException     if the specified element or target is
-     *                                  null and this list does not allow null
-     *                                  elements
-     * @throws IllegalArgumentException if the specified target is not
-     *                                  found in this list
+     * @throws NullPointerException   if the specified element or target is
+     *                                null and this list does not allow null
+     *                                elements
+     * @throws NoSuchElementException if the specified target is not
+     *                                found in this list
      */
     default void addAfter(T element, T target) {
         int index = indexOf(target);

@@ -137,40 +137,4 @@ public class HeapNode<T> extends BinaryTreeNode<T> {
     public void setRight(HeapNode<T> right) {
         super.setRight(right);
     }
-
-    /**
-     * Compares this heap node with the specified object for equality.
-     * 
-     * @param obj the object to compare with
-     * @return true if the specified object is equal to this heap node, false
-     *         otherwise
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj) || getClass() != obj.getClass())
-            return false;
-
-        HeapNode<T> other = (HeapNode<T>) obj;
-        if (parent == null && other.parent != null || parent != null && !parent.equals(other.parent))
-            return false;
-
-        return true;
-    }
-
-    /**
-     * Returns the hash code value for this heap node.
-     * The hash code is calculated based on the element, parent heap node,
-     * the left heap node and the right heap node of this heap node.
-     * 
-     * @return the hash code value for this heap node
-     */
-    public int hashCode() {
-        int result = super.hashCode();
-        result = PRIME_NUMBER * result + ((parent == null) ? 0 : parent.hashCode());
-
-        return result;
-    }
 }

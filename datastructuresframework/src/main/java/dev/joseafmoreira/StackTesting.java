@@ -3,7 +3,7 @@ package dev.joseafmoreira;
 import dev.joseafmoreira.collection.stack.LinkedStack;
 import pt.ipp.estg.ed.abstractdatatype.StackADT;
 
-public class StackTesting {
+public abstract class StackTesting {
     public static void main(String[] args) {
         StackADT<Integer> stack = new LinkedStack<>();
         stack.push(1);

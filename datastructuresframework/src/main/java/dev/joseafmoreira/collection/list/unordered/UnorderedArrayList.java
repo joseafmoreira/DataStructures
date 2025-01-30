@@ -3,6 +3,7 @@ package dev.joseafmoreira.collection.list.unordered;
 import dev.joseafmoreira.algorithm.search.LinearSearch;
 import dev.joseafmoreira.collection.list.ArrayList;
 import pt.ipp.estg.ed.abstractdatatype.UnorderedListADT;
+import pt.ipp.estg.ed.exception.EmptyCollectionException;
 
 /**
  * Resizable-array implementation of the {@code UnorderedListADT} interface
@@ -40,7 +41,6 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      * @throws IndexOutOfBoundsException {@inheritDoc}
      * @throws NullPointerException      {@inheritDoc}
      */
-    @Override
     public void add(int index, T element) {
         if (index < 0 || index > size())
             throw new IndexOutOfBoundsException("Index out of bounds");
@@ -53,6 +53,23 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
         array[index] = element;
         size++;
         modCount++;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws EmptyCollectionException {@inheritDoc}
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws NullPointerException {@inheritDoc}
+     */
+    public void set(int index, T element) {
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
+        if (index < 0 || index >= size())
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        if (element == null)
+            throw new NullPointerException("Element is null");
+        array[index] = element;
     }
 
     /**

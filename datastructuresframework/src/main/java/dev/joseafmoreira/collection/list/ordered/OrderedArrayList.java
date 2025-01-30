@@ -41,24 +41,16 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
      * @throws NullPointerException {@inheritDoc}
      * @throws ClassCastException   {@inheritDoc}
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void add(T element) {
         if (element == null)
             throw new NullPointerException("Element is null");
         if (size() == array.length)
             expandCapacity();
-        int addingIndex = size();
-        Comparable<T> comparableElement = (Comparable<T>) element;
-        for (int i = 0; i < size(); i++) {
-            if (comparableElement.compareTo(array[i]) <= 0) {
-                for (int j = size(); j > i; j--)
-                    array[j] = array[j - 1];
-                addingIndex = i;
-                break;
-            }
-        }
-        array[addingIndex] = element;
+        int insertionIndex = findInsertionIndex(element);
+        for (int i = size(); i > insertionIndex; i--)
+            array[i] = array[i - 1];
+        array[insertionIndex] = element;
         size++;
         modCount++;
     }
@@ -70,9 +62,30 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
      * @throws IndexOutOfBoundsException {@inheritDoc}
      * @throws NullPointerException      {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     public void set(int index, T element) {
-        super.set(index, element);
-        sort();
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
+        if (index < 0 || index >= size())
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        if (element == null)
+            throw new NullPointerException("Element is null");
+        T oldElement = array[index];
+        if (((Comparable<T>) element).compareTo(oldElement) == 0) {
+            array[index] = element;
+            return;
+        }
+        for (int i = index; i < size() - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        array[--size] = null;
+        int newIndex = findInsertionIndex(element);
+        for (int i = size; i > newIndex; i--) {
+            array[i] = array[i - 1];
+        }
+        array[newIndex] = element;
+        size++;
+        modCount++;
     }
 
     /**
@@ -81,8 +94,30 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
      * @throws NullPointerException {@inheritDoc}
      * @throws ClassCastException   if the elements in this list aren't comparable
      */
-    @Override
     public boolean contains(T target) {
         return BinarySearch.search(array, size(), target);
+    }
+
+    /**
+     * Finds the index at which the specified element should be inserted to maintain
+     * the order of the list.
+     * 
+     * @param element the specified element
+     * @return the index at which the specified element should be inserted
+     * @throws ClassCastException if the element isn't comparable
+     */
+    @SuppressWarnings("unchecked")
+    private int findInsertionIndex(T element) {
+        int left = 0;
+        int right = size() - 1;
+        Comparable<T> comparableElement = (Comparable<T>) element;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (comparableElement.compareTo(array[mid]) <= 0)
+                right = mid - 1;
+            else
+                left = mid + 1;
+        }
+        return left;
     }
 }

@@ -71,23 +71,6 @@ public abstract class ArrayList<T> extends AbstractIterableCollection<T> impleme
      * 
      * @throws EmptyCollectionException {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public void set(int index, T element) {
-        if (isEmpty())
-            throw new EmptyCollectionException("List is empty");
-        if (index < 0 || index >= size())
-            throw new IndexOutOfBoundsException("Index out of bounds");
-        if (element == null)
-            throw new NullPointerException("Element is null");
-        array[index] = element;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws EmptyCollectionException {@inheritDoc}
-     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public T remove(int index) {
         if (isEmpty())
@@ -118,7 +101,6 @@ public abstract class ArrayList<T> extends AbstractIterableCollection<T> impleme
      * 
      * @throws ClassCastException {@inheritDoc}
      */
-    @Override
     public void sort() {
         MergeSort.sort(array, size());
     }
@@ -188,8 +170,7 @@ public abstract class ArrayList<T> extends AbstractIterableCollection<T> impleme
          * 
          * @throws ConcurrentModificationException if this list has been altered
          */
-        @Override
-        public T next() throws ConcurrentModificationException {
+        public T next() {
             if (expectedModCount != modCount)
                 throw new ConcurrentModificationException("List has been altered");
 
@@ -201,9 +182,9 @@ public abstract class ArrayList<T> extends AbstractIterableCollection<T> impleme
          * {@inheritDoc}
          * 
          * @throws ConcurrentModificationException if this list has been altered
+         * @throws IllegalStateException if the remove method call is invalid
          */
-        @Override
-        public void remove() throws ConcurrentModificationException, IllegalStateException {
+        public void remove() {
             if (expectedModCount != modCount)
                 throw new ConcurrentModificationException("List has been altered");
             if (!okToRemove)

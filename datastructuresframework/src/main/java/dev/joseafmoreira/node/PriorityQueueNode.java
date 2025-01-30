@@ -3,7 +3,7 @@ package dev.joseafmoreira.node;
 /**
  * A priority queue node is an auxiliary object used to implement a priority
  * queue.
- * It contains an {@link #element}.
+ * It contains an {@code #element}.
  * <p>
  * 
  * The available constructors are the following:
@@ -27,15 +27,8 @@ package dev.joseafmoreira.node;
  * <li>{@link #setPriority(int)}: Sets the priority in this priority queue
  * node</li>
  * <li>{@link #getOrder()}: Returns the order of this priority queue node</li>
- * <li>{@link #getElement()}: Returns the element stored in this priority queue
- * node</li>
- * <li>{@link #setElement(Object)}: Sets the element stored in this priority
- * queue node</li>
  * <li>{@link #compareTo(PriorityQueueNode)}: Compares this PriorityQueueNode
  * with the specified PriorityQueueNode for order.</li>
- * <li>{@link #toString()}: Returns a string representation of this priority
- * queue
- * node</li>
  * </ul>
  * 
  * <h3>PriorityQueueNode</h3>
@@ -45,7 +38,7 @@ package dev.joseafmoreira.node;
  * @version 1.0
  * @author joseafmoreira
  */
-public class PriorityQueueNode<T> implements Comparable<PriorityQueueNode<T>> {
+public class PriorityQueueNode<T> extends Node<T> implements Comparable<PriorityQueueNode<T>> {
     /**
      * The order that is attributed to all new PriorityQueueNode instances
      */
@@ -54,10 +47,6 @@ public class PriorityQueueNode<T> implements Comparable<PriorityQueueNode<T>> {
      * The order stored in this priority queue node
      */
     private final int order;
-    /**
-     * The element stored in this priority queue node
-     */
-    private T element;
     /**
      * The priority stored in this priority queue node
      */
@@ -86,8 +75,8 @@ public class PriorityQueueNode<T> implements Comparable<PriorityQueueNode<T>> {
      * @param priority the priority to be stored in this priority queue node
      */
     public PriorityQueueNode(T element, int priority) {
+        super(element);
         order = NEXT_ORDER++;
-        setElement(element);
         setPriority(priority);
     }
 
@@ -165,15 +154,5 @@ public class PriorityQueueNode<T> implements Comparable<PriorityQueueNode<T>> {
 
             return result;
         }
-    }
-
-    /**
-     * Returns a string representation of this priority queue node.
-     * 
-     * @return a string representation of this priority queue node
-     */
-    @Override
-    public String toString() {
-        return element.toString();
     }
 }

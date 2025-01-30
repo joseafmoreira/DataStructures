@@ -33,6 +33,7 @@ public abstract class AbstractLinkedListCollection<T> extends AbstractCollection
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clear() {
         super.clear();
         head = null;

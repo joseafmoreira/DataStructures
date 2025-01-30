@@ -1,5 +1,7 @@
 package pt.ipp.estg.ed.abstractdatatype;
 
+import java.util.NoSuchElementException;
+
 import pt.ipp.estg.ed.exception.EmptyCollectionException;
 
 /**
@@ -78,7 +80,7 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      *                                  this binary tree does not allow null
      *                                  elements
      * @throws EmptyCollectionException if this binary tree is empty
-     * @throws IllegalArgumentException if the specified target is not
+     * @throws NoSuchElementException   if the specified target is not
      *                                  found in this binary tree
      */
     T remove(T target);
@@ -96,7 +98,7 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
         while (true) {
             try {
                 remove(target);
-            } catch (IllegalArgumentException ignored) {
+            } catch (NoSuchElementException ignored) {
                 break;
             }
         }

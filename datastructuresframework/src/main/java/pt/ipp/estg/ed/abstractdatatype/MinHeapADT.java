@@ -30,6 +30,7 @@ public interface MinHeapADT<T> extends HeapADT<T> {
      * Removes the element from the root of this min-heap.
      * 
      * @return the element from the root of this min-heap
+     * @throws EmptyCollectionException if this min-heap is empty
      */
     T removeMin();
 
@@ -37,6 +38,7 @@ public interface MinHeapADT<T> extends HeapADT<T> {
      * Returns the element from the root of this min-heap.
      * 
      * @return the element from the root of this min-heap
+     * @throws EmptyCollectionException if this min-heap is empty
      */
     T findMin();
 }
